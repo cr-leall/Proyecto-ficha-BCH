@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    {% block estilos%}
+    {% endblock estilos%}
+    <title>BancoChile</title>
+</head>
+
+<body>
+    <header class="header"> 
+        <div class="container">
+            <div class="btn-menu">
+                <label for="btn-menu">☰</label>
+            </div>   
+            <nav>
+                <img src="{% static 'img/logoBch.png' %}" id="logo" alt="logoBch"> 
+            </nav>
+        </div>
+        <div class="container-user">
+            <div class="paste-button">
+                {% if user.is_authenticated %}
+                    <img src="{{ user.userprofile.foto.url }}" alt="Foto de perfil" class="user-photo">
+                {% else %}
+                    <button class="button fa-solid fa-user"></button>
+                {% endif %}
+                <div class="dropdown-content">
+                    {% if user.is_authenticated %}
+                        <a id="bottom" href="#">Ver Perfil: {{ user.first_name }} {{ user.last_name }}</a>
+                        <a id="bottom" href="{% url 'login' %}">Cerrar sesión</a>
+                    {% else %}
+                        <a id="bottom" href="{% url 'login' %}">Inicia sesión</a>
+                        <a id="bottom" href="{% url 'registro' %}">Regístrate</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </header>
+   
+    <input type="checkbox" id="btn-menu" />
+    <div class="container-menu">
+        <div class="cont-menu">
+            <nav>
+                <a href="{% url 'index' %}">Evaluacion Ejecutivos</a>
+                <a href="{% url 'gestion' %}">Listado Ejecutivos</a>
+                <a href="#">Reporte Sucursal</a>
+                <a href="#">Revision At Sucursal</a>
+            </nav>
+            <label for="btn-menu">✖️</label>
+        </div>
+    </div>
+    <div class="capa"></div>
+    <!--------------------------------------------------------->
+    <!--botones principales-->
+    <div class="tarjeta">
+        <h3>Calificación / Estado de Carpeta</h3>
+        <!-- Mostrar mensaje bienvenida -->
+        {% if success %}
+            <div class="alert">{{ success }}</div>
+        {% endif %}
+        <div class="resultado"> Excelente
+        </div>
+    </div> 
+    <!--Contenedor Principal-->
+    <div id="container">
+        <!-- Columna Izquierda: Datos Generales -->
+        <form id="form" method="post">
+            {% csrf_token %}
+            <div class="left-column">
+                <label for="cod_oficina">Código Oficina:</label>
+                <input type="text" id="cod_oficina" name="cod_oficina" placeholder="Agregar Código" required>
+
+                <label for="rut_cliente">Rut:</label>
+                <input type="text" id="rut_cliente" name="rut_cliente" placeholder="Agregar RUT">
+
+                <label for="ejec-responsable">Ejec. Responsable:</label>
+                <input type="text" id="ejec-responsable" name="ejec_responsable"  value="{{ oficina_data.ejecutivos__nombre_ejecutivo }}" >
+
+                <label for="login-creador">Login Creador:</label>
+                <input type="text" id="login-creador" name="login_creador" value="{{ oficina_data.username_ejecutivo }}" >
+
+                <label for="tipo-cliente">Tipo de Cliente:</label>
+                <input type="text" id="tipo-cliente" name="tipo_cliente"  value="{{ oficina_data.cliente__tipo_cliente }}" >
+
+                <label for="sucursal">Sucursal:</label>
+                <input type="text" id="sucursal" name="sucursal"  value="{{ oficina_data.sucursal__nombre_suc }}">
+
+                <label for="producto">Producto:</label>
+                <input type="text" id="producto" name="producto"  value="{{ oficina_data.prod_eval }}">
+
+                <label for="m-solicitado">M. Solicitado (M$):</label>
+                <input type="text" id="m-solicitado" name="m_solicitado"  value="{{ oficina_data.monto_solicitado }}">
+
+                <label for="rut-modificar">Rut Modificar:</label>
+                <input type="text" id="rut-modificar" name="rut_modificar"  value="{{ oficina_data.cliente__rut }}">
+
+                <label for="revision-numero">Revisión N°:</label>
+                <input type="text" id="revision-numero" name="revision_numero"  value="{{ oficina_data.revision_numero }}">
+
+                <button type="submit">Consultar</button>
+            </div>
+        </form>
+        <!--Seccion central Variables-->
+        {% block contenido %}
+            {% if clientes_con_credito %}
+                <h2>Resultados:</h2>
+                <ul>
+                    {% for cliente in clientes_con_credito %}
+                        <li>{{ cliente.nombre }} (RUT: {{ cliente.rut }})</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endblock contenido %}
+        <!--Selector de Pilares--> 
+        <div class="right-column">
+            <h3>Pilares</h3>
+            <select id="pilar-select" onchange="navegarPilar()">
+                <option>Seleccione una opción</option>
+                <option value="{% url 'index' %}">Formalidad</option>
+                <option value="{% url 'gestion' %}">Gestión Otorgamiento</option>
+                <option value="{% url 'depuracion' %}">Depuración de Antecedentes</option>
+                <option value="{% url 'ingresos' %}">Ingreso de Datos</option>
+            </select>
+        </div>
+    </div>    
+    {% block js %}
+    <script src="{% static 'js/navPilares.js' %}"></script>
+    <script src="{% static 'js/form.js' %}"></script>
+    {% endblock js %}
+</body>
+</html>
