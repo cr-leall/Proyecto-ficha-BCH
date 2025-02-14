@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Pilares,Errores_agravante,Parametro,cliente,ejecutivo,sucursal,oficina,oportunidad,UserProfile,filtro_revision
+from .models import Pilares,Errores_agravante,Parametro,cliente,ejecutivo,sucursal,oficina,UserProfile,FiltroRevision
 
 admin.site.site_header = 'Admin Ficha Banco de Chile'
 
@@ -11,6 +11,5 @@ admin.site.register(Parametro)
 admin.site.register(ejecutivo)
 admin.site.register(sucursal)
 admin.site.register(oficina)
-admin.site.register(oportunidad)
 admin.site.register(UserProfile)
-admin.site.register(filtro_revision)
+admin.site.register(FiltroRevision)

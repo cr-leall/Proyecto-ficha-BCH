@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style2.css' %}">
+    <title>Buscar Filtro Revisión</title>
+</head>
+<body>
+    <header>
+        <h1>Buscar Filtro Revisión</h1>
+    </header>
+    <main>
+        <form method="post" id="sucursalForm">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="button">Consultar</button>
+            <button type="button" id="recuperarBtn">Recuperar</button>
+            <button type="reset" id="limpiarBtn">Limpiar</button>
+        </form>
+
+        <div id="resultados">
+            {% if filtros %}
+                <h2>Resultados:</h2>
+                <ul>
+                    {% for filtro in filtros %}
+                    <li>
+                        Cliente: {{ filtro.cliente.nombre }} {{ filtro.cliente.apellido }}<br>
+                        Rut: {{filtro.cliente.rut}}<br>
+                        Ejecutivo: {{ filtro.ejecutivo.nombre_ejecutivo }}<br>
+                        Login Creador: {{ filtro.ejecutivo.username_ejecutivo }}<br>
+                        Tipo de Cliente: {{ filtro.cliente.tipo_cliente }}<br>
+                        Sucursal:  {{ filtro.sucursal.nombre_suc }}<br>
+                        Producto: {{ filtro.cliente.tipo_producto }}<br>
+                        Monto Solicitado: ${{ filtro.monto_solicitado }}<br>
+                        Número de Revisión: {{ filtro.num_revision }}<br>
+                    </li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+    </main>
+    <script src="{% static 'js/validacion.js' %}"></script>
+    <script src="{% static 'js/acciones.js' %}"></script>
+</body>
+</html>

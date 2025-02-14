@@ -3,6 +3,7 @@ from django.core.validators import RegexValidator
 from django.core.exceptions import ValidationError
 from datetime import date
 from django.contrib.auth.models import User
+
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     roles = models.CharField(max_length=50)
@@ -26,13 +27,27 @@ class Errores_agravante(models.Model):
     nombre_parametro = models.CharField(max_length=100)
     tipo_error = models.CharField(max_length=100)
     tipo_cliente = models.CharField(max_length=20)
-    nota = models.CharField(max_length=20,default="") 
+    nota = models.CharField(max_length=20) 
     puntaje = models.DecimalField(max_digits=5, decimal_places=1)
 
     def __str__(self):
          return self.nombre_parametro
+class sucursal(models.Model):
+    cod_sucursal = models.CharField(("Codigo Sucursal"),primary_key=True, max_length=10)
+    nombre_suc = models.CharField(("Nombre Sucursal"),max_length=50)
+    aprobador = models.CharField(("Nombre aprobador"),max_length=30)
+    cant_ejecutivo = models.CharField(("Cantidad Ejecutivos"),max_length=5)
 
+    def __str__(self):
+         return self.nombre_suc
+    
+class oficina(models.Model):
+    cui = models.CharField(("CUI"),primary_key=True, max_length=10)
+    nombre_ofi = models.CharField(("Nombre Oficina"),max_length=50)  
 
+    def __str__(self):
+        return self.nombre_ofi
+    
 def validar_rut(rut):
     rut = rut.replace(".", "").replace("-","").upper()
     cuerpo = rut[:-1]
@@ -68,6 +83,7 @@ class cliente(models.Model):
                     ],
                     help_text="Formato: XXXXXXXX-X"
                         )
+    oficina = models.ForeignKey(oficina, on_delete=models.CASCADE)
     nombre = models.CharField(max_length=150)
     apellido = models.CharField(max_length=150)
     email = models.EmailField
@@ -123,44 +139,14 @@ class ejecutivo(models.Model):
     def __str__(self):
         return f"{self.nombre_ejecutivo} / Username: {self.username_ejecutivo}"
 
-class oficina(models.Model):
-    cui = models.CharField(("CUI"),primary_key=True, max_length=10)
-    nombre_ofi = models.CharField(("Nombre Oficina"),max_length=50)  
-
-    def __str__(self):
-        return self.nombre_ofi
-class sucursal(models.Model):
-    cod_sucursal = models.CharField(("Codigo Sucursal"),primary_key=True, max_length=10)
-    nombre_suc = models.CharField(("Nombre Sucursal"),max_length=50)
-    aprobador = models.CharField(("Nombre aprobador"),max_length=30)
-    n_oportunidad = models.CharField(("N° Oportunidad"),max_length=100)
-    cant_ejecutivo = models.CharField(("Cantidad Ejecutivos"),max_length=5,default="")
-
-    def __str__(self):
-         return self.nombre_suc
-class oportunidad(models.Model):
-    id_oportunidad = models.AutoField(primary_key=True)
-    username_ejecutivo = models.CharField(("Log Ejecutivo"),default="",max_length=20)
-    cui = models.ForeignKey(oficina, on_delete=models.CASCADE, default=0)
-    inconsistencia = models.CharField(max_length=200)
-    monto_solicitado = models.IntegerField(("monto solicitado"), default=0)
-    proceso_credito = models.CharField(max_length=20)
-    pauta_evaluacion = models.CharField(max_length=30)
-    desicion_final = models.BooleanField
-    anio_mes = models.DateField("Fecha", auto_now=False, auto_now_add=False, default=date.today)
-    canal = models.CharField(max_length=5, default="")
-    prod_eval = models.CharField(("producto evaluado"),max_length=50) 
-
-class filtro_revision(models.Model):
+class FiltroRevision(models.Model):
     id_filtro = models.AutoField(primary_key=True)
-    cui = models.ForeignKey(oficina, on_delete=models.CASCADE)
-    rut = models.ForeignKey(cliente, on_delete=models.CASCADE) 
-    nombre_ejecutivo = models.CharField(ejecutivo,('Ejec.Responsable'), max_length=40)
-    username_ejecutivo = models.CharField(ejecutivo, max_length=20)
-    tipo_cliente = models.CharField(cliente, max_length=10)
-    nombre_suc = models.CharField(sucursal, max_length=40)
-    tipo_producto = models.CharField(cliente, max_length=20)
-    monto_solicitado = models.IntegerField(("monto solicitado"), default=0)
-    rut = models.CharField(cliente, max_length=10)
-    num_revision= models.CharField(('Revisión N°: '),max_length=10)
-    
+    oficina = models.ForeignKey(oficina, on_delete=models.CASCADE)
+    sucursal = models.ForeignKey(sucursal, on_delete=models.CASCADE)
+    cliente = models.ForeignKey(cliente, on_delete=models.CASCADE)
+    ejecutivo = models.ForeignKey(ejecutivo, on_delete=models.CASCADE)
+    monto_solicitado = models.CharField(max_length=30)
+    n_revision = models.IntegerField(('N° Revision'))
+
+    def __str__(self):
+        return f"N° filtro {self.id_filtro}"

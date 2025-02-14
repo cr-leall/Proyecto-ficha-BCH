@@ -1,5 +1,6 @@
 from django.shortcuts import render
-from .models import cliente, ejecutivo, oficina, sucursal, oportunidad
+from .models import cliente, ejecutivo, oficina, sucursal,FiltroRevision
+from .forms import SucursalForm
 #Import Modelo de tablas User
 from django.contrib.auth.models import User
 from .models import UserProfile
@@ -78,35 +79,7 @@ def logout_view(request):
 	return render(request,'web/login.html',{'output':message})
 
 def base(request):
-    clientes_con_credito = []
-    oficina_data = {}
-    if request.method == 'POST':
-        cod_oficina = request.POST.get("cod_oficina", "").strip()
-        rut_cliente = request.POST.get("rut_cliente", "").strip()
-
-        # Validar que el código de oficina no esté vacío
-        if cod_oficina:
-            # Obtener datos de la oficina
-            oficina_data = oportunidad.objects.filter(cui=cod_oficina).values(
-                'cliente__rut', 'cliente__nombre', 'ejecutivos__nombre_ejecutivo', 'username_ejecutivo', 
-                'cliente__tipo_cliente', 'sucursal__nombre_suc', 'prod_eval', 'monto_solicitado', 'revision_numero'
-            ).first()
-
-            # Filtrar clientes por RUT si se proporciona
-            if rut_cliente:
-                clientes_con_credito = cliente.objects.filter(
-                    oportunidad__cui=cod_oficina,
-                    rut=rut_cliente
-                ).distinct()
-            else:
-                clientes_con_credito = cliente.objects.filter(
-                    oportunidad__cui=cod_oficina
-                ).distinct()
-
-    return render(request, 'web/base.html', {
-        'clientes_con_credito': clientes_con_credito,
-        'oficina_data': oficina_data
-    })
+    return render(request, 'web/base.html',)
 
 def index(request):
     return render(request,'web/index.html')
@@ -120,4 +93,17 @@ def depuracion_antece(request):
 def ingreso_datos(request):
     return render(request,'web/ingreso_datos.html')
 
-# Otras vistas...
+def buscar(request):
+    filtros = None
+    if request.method == 'POST':
+        form = SucursalForm(request.POST)
+        if form.is_valid():
+            cui = form.cleaned_data['cui']
+            rut = form.cleaned_data.get('rut')
+            filtros = FiltroRevision.objects.filter(oficina__cui=cui)
+            if rut:
+                filtros = filtros.filter(cliente=rut)
+    else:
+        form = SucursalForm()
+
+    return render(request, 'web/buscar.html', {'form': form, 'filtros': filtros})
