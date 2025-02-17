@@ -1,7 +1,7 @@
-/*@import url("https://fonts.googleapis.com/css?family=Montserrat|Montserrat+Alternates|Poppins&display=swap");*/
+@import url("https://fonts.googleapis.com/css?family=Montserrat|Montserrat+Alternates|Poppins&display=swap");
 
 body {
-  /*background-image: url("https://cdn.pixabay.com/photo/2023/05/28/09/21/south-tyrol-8023213_1280.jpg");*/
+  background-image: url("https://cdn.pixabay.com/photo/2023/05/28/09/21/south-tyrol-8023213_1280.jpg");
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -13,10 +13,8 @@ body {
 }
 
 /* Estilos para el encabezado */
-.container .btn-menu,
-.logo {
+.container .btn-menu {
   float: left;
-  margin-top: 5px;
   line-height: 1px;
 }
 
@@ -24,7 +22,7 @@ body {
   color: #fff;
   font-size: 30px;
   cursor: pointer;
-  margin-left: 10px;
+  margin-left: 15px;
 }
 .user-photo {
   width: 60px;
@@ -36,7 +34,7 @@ body {
   display: block;
   align-items: center;
   color: white;
-  margin-left: 63rem;
+  margin-left: 50rem;
 }
 
 .container-user .fa-user {
@@ -48,17 +46,10 @@ body {
 }
 
 .paste-button .button {
-  background-color: #20918b;/* Color de fondo del botón */
   color: white; /* Color del texto del botón */
   padding: 10px 20px; /* Espaciado interno del botón */
-  font-size: 16px; /* Tamaño de la fuente del botón */
-  border: none; /* Sin borde */
   cursor: pointer; /* Cambiar el cursor al pasar sobre el botón */
   border-radius: 5px; /* Bordes redondeados */
-}
-
-.paste-button .button:hover {
-  background-color: #4dc0ba; /* Color de fondo al pasar el cursor */
 }
 
 .dropdown-content {
@@ -80,7 +71,7 @@ body {
 }
 
 .dropdown-content a:hover {
-  background-color: #f1f1f1; /* Color de fondo al pasar el cursor sobre los enlaces */
+  background-color: #afababe7; /* Color de fondo al pasar el cursor sobre los enlaces */
 }
 
 .paste-button:hover .dropdown-content {

@@ -107,3 +107,9 @@ def buscar(request):
         form = SucursalForm()
 
     return render(request, 'web/buscar.html', {'form': form, 'filtros': filtros})
+
+def listar_ejec(request):
+    return render(request, 'web/listar_ejec.html')
+
+def reporte(request):
+    return render(request, 'web/reporte.html')

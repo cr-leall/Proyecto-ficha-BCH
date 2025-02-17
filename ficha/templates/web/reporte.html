@@ -1,0 +1,114 @@
+<!DOCTYPE <!DOCTYPE html>
+<html lang="es">
+
+{% load static %}
+    <head>
+        <title>Reporte</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title> Reporte de Sucursal</title>
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <link rel="stylesheet" href="{% static 'css/base.css' %}">
+        <link rel="stylesheet" href="{% static 'css/reporte.css' %}">
+    </head>
+<body>
+    <header class="header"> 
+        <div class="container">
+            <div class="btn-menu">
+                <label for="btn-menu">☰</label>
+            </div>   
+        </div>
+        <nav>
+            <img src="{% static 'img/logoBch.png' %}" id="logo" alt="logoBch"> 
+        </nav>
+        <div class="container-user">
+            <div class="paste-button">
+                {% if user.is_authenticated %}
+                    <img src="{{ user.userprofile.foto.url }}" alt="Foto de perfil" class="user-photo">
+                {% else %}
+                    <button class="button fa-solid fa-user"></button>
+                {% endif %}
+                <div class="dropdown-content">
+                    {% if user.is_authenticated %}
+                        <a id="bottom" href="{% url 'index' %}">Ver Perfil: {{ user.first_name }} {{ user.last_name }}</a>
+                        <a id="bottom" href="{% url 'login' %}">Cerrar sesión</a>
+                    {% else %}
+                        <a id="bottom" href="{% url 'login' %}">Inicia sesión</a>
+                        <a id="bottom" href="{% url 'registro' %}">Regístrate</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </header>
+   
+    <input type="checkbox" id="btn-menu" />
+    <div class="container-menu">
+        <div class="cont-menu">
+            <nav>
+                <a href="{% url 'index' %}">Evaluacion Ejecutivos</a>
+                <a href="{% url 'Listado' %}">Listado Ejecutivos</a>
+                <a href="{% url 'Reporte' %}">Reporte Sucursal</a>
+                <a href="{% url 'Buscar' %}">Revision At Sucursal</a>
+            </nav>
+            <label for="btn-menu">✖️</label>
+        </div>
+    </div>
+    <div class="capa"></div>
+    <!--------------------------------------------------------->
+
+         <main clas="container">
+            <!--sección de Datos de la sucursal-->
+            <section class="datos-sucursal">
+                <h2> Reporte sucursal Copiapó</h2>
+                <p><strong> Gerente Área: </strong>Ignacio Ernesto Chavarría Bustos</p>
+                <p><strong> Gerente Zonal: </strong>Rodrigo Javier Bahamonde Reihbein</p>
+                <p><strong> Gerente Sucursal: </strong>Marcelo Rodrigo Schmeiler Garcia</p>
+                <p><strong> Tipo de Informe: </strong>Eval. Normal/Normal S Rev. Automática</p>                
+            </section>
+
+            <!--Sección de Evaluación-->
+            <section class="evaluación">
+                <h2> Datos de Evaluación</h2>
+                <p><strong> N° Ejecutivos Evaluados en Revisión:</strong> 4 Ejecutivos</p>
+                <p><strong> Periodo de la Mustra Revisión Validador:</strong> Noviembre y Diciembre 2024</p>
+                <p><strong> Cobertura Validación / Documentación:</strong> Casos -20.2% Montos</p>
+                <p><strong> N° ejecutivos Evaluados en Revisión Automática: </strong> Toda la Sucursal</p>                   
+                <p><strong> Cobertura de revisión automática Ultimos 6 meses:</strong> 100% Casos </p>
+            </section>
+
+            <!--Seccion de Resultados-->
+            <section class="resultados">
+                <h2>BANCA COMERCIAL BANCO CHILE</h2>
+                <P> la calidad del proceso de Otorgamiento de la Muestra revisada en la sucursal es de nivel <strong> Excelente</strong> </P>
+
+                <ul> 
+                    <li> <strong> Formalidad:</strong> con un nivel de cumplimiento del 100%</li>
+                    <li> <strong> Gestión de Otorgamiento:</strong> Con un nivel de cumplimiento del 100%</li>
+                    <li> <strong> Depuración de Antecedentes:</strong> con un nivel de cumplimiento del 100%</li>
+                    <li> <strong> Ingreso de Datos:</strong> con un nivel de cumplimiento del 95%. Se debe mejorar el ingreso de los antecedentes del cliente principalmente en la actividad, Institución Educacional, Nivel Educacional, Tipo de Renta, Tipo de Contrato y Profesión</li>
+                    <li> <strong> Revisiones Automáticas:</strong> En el periodo acumulado de los últimos 6 meses, se registra una incidencia en la revisión automátic. Ingreso de Datos del 4% y para la revisión automática Eje. Evaluador Sin ATC se registra una incidencia del 0.0%</li>
+                </ul>
+            </section>
+            <!--Seccion de Calificaciones-->
+            <section class="calificaciones">
+                <div class="etiqueta">
+                    <span class="etiqueta-valor">Excelente</span>
+                    <span class="etiqueta-texto">Calificación Informe de Validación/Documentación</span>
+                    
+                </div>
+                <div class="etiqueta">
+                    <span class="etiqueta-valor">Excelente</span>
+                    <span class="etiqueta-texto">Calificación Informe de Revisión Automática</span>
+                    
+                </div>
+                <div class="etiqueta">
+                    <span class="etiqueta-valor">Excelente</span>
+                    <span class="etiqueta-texto"> Calificación Final</span>
+                    
+                </div>
+                
+            
+            </section>
+         </main>                 
+</body>
+</html>

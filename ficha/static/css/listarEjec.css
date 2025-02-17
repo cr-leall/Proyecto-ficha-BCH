@@ -1,0 +1,232 @@
+/* General */
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+/* Encabezado */
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #1f2a44;
+    color: white;
+    padding: 20px;
+}
+.header-info p{
+    margin: 0;
+    font-size: 10px;
+}
+
+.tittle{
+    font-size: 24px;
+    font-weight: bold;
+}
+.close-btn{
+    background: red;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+/*Centrar titulo de Resultados*/
+.center-tittle{
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    color: #1f2a44;
+}
+/*Sección del Filtro*/
+.filter-section{
+    margin-bottom: 20px;
+    text-align: center;
+}
+.filter{
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+
+}
+.filter label{
+    font-size: 16px;
+    font-weight: bold;
+    color: #1f2a44;
+}
+.filter input{
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 200px;
+
+}
+.filter button{
+    padding: 8px 15px;
+    background-color: #1f2a44;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+/*Seccion Tabla*/
+.table-section{
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+.executives-table{
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 14px;
+    color: #333;
+
+}
+.executives-table th,
+.executives-table td{
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+.executives-table th{
+    background-color: #1f2a44;
+    color: white;
+    font-weight: bold;
+}
+.executives-table tbody tr :nth-child(even){
+    background-color: #f9f9f9;
+
+}
+.executives-table tbody tr :hover{
+    background-color: #f1f1f1;
+}
+.executives-table td strong{
+    font-weight: bold;
+    color: #1f2a44;
+}
+/*sección del Gráfico*/
+.chart-section{
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    text-align: center;
+}
+.chart-section h2{
+    margin-bottom: 20px;
+    font-size: 20px;
+    color: #1f2a44;
+}
+#mypieChart{
+    max-width: 400px;
+    margin: 0 auto;
+}
+/* Seccion de Observaciones*/
+.observations-section{
+    margin-top: 20px;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.observations-section h2{
+    margin-bottom: 20px;
+    font-size: 20px;
+    color: #1f2a44;
+    text-align: center;
+}
+.observations-table{
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+    font-size: 11px;
+    color: #333;
+}
+.observations-table th{
+    background-color: #1f2a44;
+    color: white;
+    font-weight: bold;
+    padding: 10px;
+    font-size: 12px
+}
+.observations-table td{
+    padding: 6px; /*Reduce el espaciado entre celdas*/
+    border: 1px solid #ddd;
+    text-align: left;
+}
+.observations-table tbody tr :nth-child(even){
+    background-color: #f9f9f9;
+}
+.observations-table tbody tr :hover{
+    background-color: #f1f1f1;
+
+}
+/*Espaciado adicional para observaciones*/
+.observations-table td :nth-child(4){
+    white-space: pre-wrap; /*permite texto en varias lineas*/
+    line-height: 1.3;/*Mejor separación entre líneas*/
+    font-size: 10px;
+}
+.chart-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 30px;
+}
+
+.chart-section h2 {
+    font-size: 22px;
+    font-weight: bold;
+    color: #2C3E50;
+    margin-bottom: 20px;
+}
+
+canvas {
+    display: block !important;
+    width: 450px !important; /* Ajusta el tamaño del canvas */
+    height: 450px !important; /* Ajusta el tamaño del canvas */
+    border-radius: 10px;
+    background-color: white;      
+    padding: 10px;
+}    
+/*Sección de Busqueda, esta reciclado del primer filtro*/
+.filter-section{
+    margin-bottom: 20px;
+    text-align: center;
+}
+.filter{
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+
+}
+.filter label{
+    font-size: 16px;
+    font-weight: bold;
+    color: #1f2a44;
+}
+.filter input{
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 200px;
+
+}
+.filter button{
+    padding: 8px 15px;
+    background-color: #1f2a44;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}

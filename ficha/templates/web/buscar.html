@@ -10,6 +10,24 @@
 <body>
     <header>
         <h1>Buscar Filtro Revisión</h1>
+        <div class="container-user">
+            <div class="paste-button">
+                {% if user.is_authenticated %}
+                    <img src="{{ user.userprofile.foto.url }}" alt="Foto de perfil" class="user-photo">
+                {% else %}
+                    <button class="button fa-solid fa-user"></button>
+                {% endif %}
+                <div class="dropdown-content">
+                    {% if user.is_authenticated %}
+                        <a id="bottom" href="{% url 'index' %}">Ver Perfil: {{ user.first_name }} {{ user.last_name }}</a>
+                        <a id="bottom" href="{% url 'login' %}">Cerrar sesión</a>
+                    {% else %}
+                        <a id="bottom" href="{% url 'login' %}">Inicia sesión</a>
+                        <a id="bottom" href="{% url 'registro' %}">Regístrate</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
     </header>
     <main>
         <form method="post" id="sucursalForm">
@@ -34,7 +52,7 @@
                         Sucursal:  {{ filtro.sucursal.nombre_suc }}<br>
                         Producto: {{ filtro.cliente.tipo_producto }}<br>
                         Monto Solicitado: ${{ filtro.monto_solicitado }}<br>
-                        Número de Revisión: {{ filtro.num_revision }}<br>
+                        Número de Revisión: {{ filtro.n_revision }}<br>
                     </li>
                     {% endfor %}
                 </ul>
