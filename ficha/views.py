@@ -78,11 +78,8 @@ def logout_view(request):
 	message = "Cerraste sesion correctamente"
 	return render(request,'web/login.html',{'output':message})
 
-def base(request):
-    return render(request, 'web/base.html',)
-
 def index(request):
-    return render(request,'web/index.html')
+    return render(request, 'web/index.html',)
 
 def gestion_otorga(request):
     return render(request,'web/gestion_otorga.html')
@@ -93,7 +90,7 @@ def depuracion_antece(request):
 def ingreso_datos(request):
     return render(request,'web/ingreso_datos.html')
 
-def buscar(request):
+def base(request):
     filtros = None
     if request.method == 'POST':
         form = SucursalForm(request.POST)
@@ -106,7 +103,7 @@ def buscar(request):
     else:
         form = SucursalForm()
 
-    return render(request, 'web/buscar.html', {'form': form, 'filtros': filtros})
+    return render(request, 'web/base.html', {'form': form, 'filtros': filtros})
 
 def listar_ejec(request):
     return render(request, 'web/listar_ejec.html')

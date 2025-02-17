@@ -12,72 +12,6 @@ body {
   background: rgba(0, 0, 0, 0.6);
 }
 
-/* Estilos para el encabezado */
-.container .btn-menu {
-  float: left;
-  line-height: 1px;
-}
-
-.container .btn-menu label {
-  color: #fff;
-  font-size: 30px;
-  cursor: pointer;
-  margin-left: 15px;
-}
-.user-photo {
-  width: 60px;
-  height: 60px;
-  border-radius: 30px;
-  object-fit: cover;
-}
-.container-user {
-  display: block;
-  align-items: center;
-  color: white;
-  margin-left: 50rem;
-}
-
-.container-user .fa-user {
-  font-size: 4rem;
-  color: white;
-  padding-right: 2.5rem;
-  border-right: 1px solid rgb(157, 154, 172);
-  text-decoration: none;
-}
-
-.paste-button .button {
-  color: white; /* Color del texto del botón */
-  padding: 10px 20px; /* Espaciado interno del botón */
-  cursor: pointer; /* Cambiar el cursor al pasar sobre el botón */
-  border-radius: 5px; /* Bordes redondeados */
-}
-
-.dropdown-content {
-  display: none; /* Ocultar el contenido del menú desplegable por defecto */
-  position: absolute; /* Posición absoluta para el menú desplegable */
-  background-color: #f9f9f9; /* Color de fondo del menú desplegable */
-  min-width: 160px; /* Ancho mínimo del menú desplegable */
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); /* Sombra del menú desplegable */
-  z-index: 1; /* Asegurarse de que el menú desplegable esté por encima de otros elementos */
-  border-radius: 5px; /* Bordes redondeados */
-}
-
-.dropdown-content a {
-  color: black; /* Color del texto de los enlaces */
-  padding: 12px 16px; /* Espaciado interno de los enlaces */
-  text-decoration: none; /* Sin subrayado */
-  display: block; /* Mostrar los enlaces como bloques */
-  border-bottom: 1px solid #ddd; /* Línea divisoria entre enlaces */
-}
-
-.dropdown-content a:hover {
-  background-color: #afababe7; /* Color de fondo al pasar el cursor sobre los enlaces */
-}
-
-.paste-button:hover .dropdown-content {
-  display: block; /* Mostrar el contenido del menú desplegable al pasar el cursor sobre el botón */
-}
-
 /* Menú lateral */
 #btn-menu {
   display: none;
@@ -176,22 +110,6 @@ body {
 }
 
 /* Sección Central */
-.central-section,
-.right-column,
-.left-column {
-  width: 100%;
-  margin-top: 10px;
-}
-
-@media (min-width: 768px) {
-  .central-section,
-  .right-column {
-    width: 45%;
-  }
-  .left-column {
-    width: 18%;
-  }
-}
 
 .central-section {
   margin-top: 10px;
@@ -201,17 +119,8 @@ body {
   box-shadow: 0 6px 8px rgb(0, 0, 0);
   text-align: left;
   height: auto;
-  width: 100%;
+  width: auto;
   max-width: 43em;
-}
-
-@media (min-width: 768px) {
-  .central-section {
-    width: 60%;
-  }
-  .top-buttons {
-    width: 42em;
-  }
 }
 
 .central-section h2 {
@@ -269,6 +178,7 @@ body {
   flex-basis: 0;
   background: white;
   padding: 20px;
+  width: auto;
   height: auto;
   border-radius: 20px;
   box-shadow: 0 6px 8px rgb(0, 0, 0);
@@ -288,52 +198,4 @@ option {
   border: 1px solid #000000;
   border-radius: 10px;
   cursor: pointer;
-}
-
-/* Columna Izquierda */
-.left-column {
-  flex-direction: column;
-  flex-grow: 1;
-  flex-basis: 0;
-  background: white;
-  padding: 10px;
-  height: auto;
-  border-radius: 20px;
-  box-shadow: 0 6px 8px rgb(0, 0, 0);
-  margin-top: 10px;
-  text-align: left;
-  margin-bottom: 10px;
-}
-
-.left-column label {
-  margin-top: 10px;
-  display: flex;
-  flex-direction: column;
-}
-
-.inputs {
-  display: flex;
-  gap: 10px;
-  align-items: center;
-  margin-bottom: 20px;
-}
-.left-column .inputs select,
-.left-column .inputs input[type="text"] {
-  width: 100%;
-  max-width: 200px;
-  padding: 10px;
-  border: 1px solid #645353d3;
-  border-radius: 10px;
-  cursor: pointer;
-}
-
-
-@media (min-width: 768px) {
-  .central-section,
-  .right-column {
-    width: 45%; /
-  }
-  .left-column {
-    width: 18%; 
-  }
 }

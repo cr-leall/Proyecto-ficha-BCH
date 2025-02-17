@@ -21,52 +21,247 @@ body {
   height: 70px;
   display: flex;
   align-items: center;
+  justify-content: space-between; /* Distribuir espacio entre elementos */
   padding: 10px;
   background-color: rgb(6, 22, 100);
   box-shadow: 0 3px 5px rgb(8, 8, 17);
 }
+
 #logo {
-  position: static;
   height: 70px;
-  margin-left: 20px;
   margin-top: 10px;
+}
+
+/* Estilos para el botón del menú */
+.container .btn-menu {
+  float: left;
+  line-height: 1px;
+}
+
+.container .btn-menu label {
+  color: #fff;
+  font-size: 30px;
+  cursor: pointer;
+  margin-left: 15px;
+}
+
+/* Estilos para la foto del usuario */
+.user-photo {
+  width: 70px; /* Ajustar tamaño de la foto */
+  height: 70px;
+  border-radius: 50%; /* Hacer la foto circular */
+  object-fit: cover;
+}
+
+/* Contenedor del usuario */
+.container-user {
+  display: flex; /* Usar flexbox para alinear elementos */
+  align-items: center;
+  color: white;
+  padding-right: 20px; /* Espacio a la derecha */
+}
+
+/* Estilos para el icono de usuario */
+.container-user .fa-user {
+  color: white;
+  border-right: 1px solid rgb(157, 154, 172);
+  text-decoration: none;
 }
 
 /* Estilos responsivos */
 @media (max-width: 768px) {
   .header {
-    flex-direction: column;
-    height: auto;
+    flex-direction: column; /* Cambiar a columna en pantallas más pequeñas */
+    align-items: flex-start; /* Alinear elementos al inicio */
   }
 
-  #logo {
-    height: 50px;
+  .container-user {
+    justify-content: center; /* Centrar en pantallas más pequeñas */
+    padding-right: 0;
+    margin-top: 10px; /* Añadir margen superior */
   }
 
-  .container {
-    padding: 1.25rem;
+  .container-user .fa-user {
+    font-size: 1.5rem; /* Ajustar tamaño del icono */
+    padding-right: 0.5rem;
   }
 }
 
 @media (max-width: 480px) {
-  body {
-    font-size: 0.9rem;
-  }
-
   .header {
-    padding: 0.3125rem;
+    flex-direction: column; /* Cambiar a columna en pantallas muy pequeñas */
+    align-items: flex-start; /* Alinear elementos al inicio */
   }
 
-  #logo {
-    height: 40px;
+  .container-user {
+    flex-direction: column; /* Cambiar a columna en pantallas muy pequeñas */
+    align-items: center;
+    margin-top: 10px; /* Añadir margen superior */
   }
 
-  .container {
-    padding: 0.625rem;
+  .container-user .fa-user {
+    font-size: 1.2rem; /* Ajustar tamaño del icono */
+    padding-right: 0;
+    margin-bottom: 10px; /* Espacio entre icono y foto */
+  }
+}
+.paste-button .button {
+  color: white; /* Color del texto del botón */
+  padding: 1px; /* Espaciado interno del botón */
+  cursor: pointer; /* Cambiar el cursor al pasar sobre el botón */
+  border-radius: 10px; /* Bordes redondeados */
+}
+
+.dropdown-content {
+  display: none; /* Ocultar el contenido del menú desplegable por defecto */
+  position: absolute; /* Posición absoluta para el menú desplegable */
+  background-color: #f9f9f9; /* Color de fondo del menú desplegable */
+  min-width: 160px; /* Ancho mínimo del menú desplegable */
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); /* Sombra del menú desplegable */
+  z-index: 1; /* Asegurarse de que el menú desplegable esté por encima de otros elementos */
+  border-radius: 10px; /* Bordes redondeados */
+  right: 0; /* Alinear el menú desplegable hacia la izquierda */
+  transform: translateX(-49%); /* Desplazar el menú hacia la izquierda */
+  top: 18px; /* Ajustar la posición vertical para que quede más arriba */
+}
+
+.dropdown-content a {
+  color: black; /* Color del texto de los enlaces */
+  padding: 12px 16px; /* Espaciado interno de los enlaces */
+  text-decoration: none; /* Sin subrayado */
+  display: block; /* Mostrar los enlaces como bloques */
+  border-bottom: 1px solid #ddd; /* Línea divisoria entre enlaces */
+}
+
+.dropdown-content a:hover {
+  background-color: #afababe7; /* Color de fondo al pasar el cursor sobre los enlaces */
+}
+
+.paste-button:hover .dropdown-content {
+  display: block; /* Mostrar el contenido del menú desplegable al pasar el cursor sobre el botón */
+}
+.dropdown-content a {
+  color: black; /* Color del texto de los enlaces */
+  padding: 12px 16px; /* Espaciado interno de los enlaces */
+  text-decoration: none; /* Sin subrayado */
+  display: block; /* Mostrar los enlaces como bloques */
+  border-bottom: 1px solid #ddd; /* Línea divisoria entre enlaces */
+}
+
+.dropdown-content a:hover {
+  border-radius: 10px;
+  background-color: #afababe7; /* Color de fondo al pasar el cursor sobre los enlaces */
+}
+
+.paste-button:hover .dropdown-content {
+  display: block; /* Mostrar el contenido del menú desplegable al pasar el cursor sobre el botón */
+}
+/* Estilos columna izquierda  */
+form {
+  margin-top: 10px;
+  padding: 10px;
+
+}
+
+.botones button {
+  background-color:  rgb(6, 22, 100);
+  color: #fff;
+  border-radius: 20px;
+  border: 1px solid rgb(40, 116, 238);
+  padding: 10px 20px;
+  cursor: pointer;
+  margin: 5px 0; 
+}
+
+
+.resultados {
+  margin-left: 10px;
+  width: auto;
+  height: auto;
+  background: whitesmoke;
+  border-radius: 20px;
+  box-shadow: 0 6px 8px rgb(0, 0, 0);
+  font-size: 18px;
+}
+
+.resultados h2 {
+  padding: 5px;
+  text-align: left;
+  font-size: 30px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.resultados ul {
+  align-content: flex-start;
+  padding: 10px;
+  text-align: left;
+  font-size: 16px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.resultados li {
+  display: flex;
+  flex-direction: column;
+  align-content: flex-start;
+  margin-bottom: 15px; /* Espacio entre elementos */
+  padding: 10px; /* Espacio interno */
+  border: 1px solid #ddd; /* Borde */
+  border-radius: 10px; /* Bordes redondeados */
+  background-color: #f9f9f9; /* Fondo claro */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra */
+}
+
+.resultados li:hover {
+  background-color: #f1f1f1; /* Fondo más oscuro al pasar el ratón */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada */
+}
+
+.resultados li p {
+  margin: 5px 0; /* Espacio entre párrafos */
+}
+/* Estilos responsivos */
+@media (max-width: 768px) {
+  .resultados {
+    width: 100%;
+    margin-left: 0;
+    height: auto;
+  }
+
+  .resultados h2 {
+    font-size: 24px;
+  }
+
+  .resultados ul {
+    font-size: 16px;
+  }
+
+  button {
+    width: 100%;
+    padding: 10px;
   }
 }
 
-img {
-  max-width: 100%;
-  height: auto;
+@media (max-width: 480px) {
+  form {
+    padding: 5px;
+  }
+
+  .resultados {
+    width: 100%;
+    margin-left: 0;
+    height: auto;
+  }
+
+  .resultados h2 {
+    font-size: 20px;
+  }
+
+  .resultados ul {
+    font-size: 14px;
+  }
+
+  button {
+    width: 100%;
+    padding: 8px;
+  }
 }

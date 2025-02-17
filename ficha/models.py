@@ -78,10 +78,10 @@ class cliente(models.Model):
         validators=[
              RegexValidator(
                 regex = r'^\d{7,8}-[\dkK]$',
-                  message = "El RUT debe estar en formato XXXXXXXX-X"
+                  message = "El RUT debe estar en formato 20222777-X"
                         )
                     ],
-                    help_text="Formato: XXXXXXXX-X"
+                    help_text="Formato: 20222777-X"
                         )
     oficina = models.ForeignKey(oficina, on_delete=models.CASCADE)
     nombre = models.CharField(max_length=150)
@@ -96,7 +96,7 @@ class cliente(models.Model):
         self.rut = self.rut.replace(".","").upper()
         validar_rut(self.rut)
     def __str__(self):
-         return f"{self.nombre} {self.apellido}"
+         return f"{self.rut}"
 
 def val_rut_ejecutivo(rut_ejecutivo):
     rut_ejecutivo = rut_ejecutivo.replace(".", "").replace("-","").upper()
@@ -128,7 +128,7 @@ class ejecutivo(models.Model):
          validators=[
              RegexValidator(
                 regex = r'^\d{7,8}-[\dkK]$',
-                  message = "El RUT debe estar en formato XXXXXXXX-X"
+                  message = "El RUT debe estar en formato 20222777-X"
                         )
                     ],
                     help_text="Formato: 20222777-X"

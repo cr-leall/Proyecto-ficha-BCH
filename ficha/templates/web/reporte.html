@@ -3,7 +3,6 @@
 
 {% load static %}
     <head>
-        <title>Reporte</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title> Reporte de Sucursal</title>
@@ -11,6 +10,7 @@
         <link rel="stylesheet" href="{% static 'css/base.css' %}">
         <link rel="stylesheet" href="{% static 'css/reporte.css' %}">
     </head>
+    
 <body>
     <header class="header"> 
         <div class="container">
@@ -48,7 +48,7 @@
                 <a href="{% url 'index' %}">Evaluacion Ejecutivos</a>
                 <a href="{% url 'Listado' %}">Listado Ejecutivos</a>
                 <a href="{% url 'Reporte' %}">Reporte Sucursal</a>
-                <a href="{% url 'Buscar' %}">Revision At Sucursal</a>
+                <a href="#">Revision At Sucursal</a>
             </nav>
             <label for="btn-menu">✖️</label>
         </div>

@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
     {% block estilos %}
+    
     {% endblock estilos %}
     <title>BancoChile</title>
 </head>
@@ -42,7 +43,6 @@
             </div>
         </div>
     </header>
-   
     <input type="checkbox" id="btn-menu" />
     <div class="container-menu">
         <div class="cont-menu">
@@ -50,7 +50,7 @@
                 <a href="{% url 'index' %}">Evaluacion Ejecutivos</a>
                 <a href="{% url 'Listado' %}">Listado Ejecutivos</a>
                 <a href="{% url 'Reporte' %}">Reporte Sucursal</a>
-                <a href="{% url 'Buscar' %}">Revision At Sucursal</a>
+                <a href="#">Revision At Sucursal</a>
             </nav>
             <label for="btn-menu">✖️</label>
         </div>
@@ -61,7 +61,7 @@
     <!--botones principales-->
     <div class="tarjeta">
         <h3>Calificación / Estado de Carpeta</h3>
-        <!-- Mostrar mensaje bienvenida -->
+        <!--Mostrar mensaje bienvenida -->
         {% if success %}
             <div class="alert">{{ success }}</div>
         {% endif %}
@@ -71,54 +71,58 @@
 
     <!--Contenedor Principal-->
     <div id="container">
-        <!-- Columna Izquierda: Datos Generales -->
-        <form id="sucursalForm " method="POST">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <div class="left-column">
-                <button type="submit" class="button">Consultar</button>
-                <button type="button" id="recuperarBtn">Recuperar</button>
-                <button type="reset" id="limpiarBtn">Limpiar</button>
+        <main>
+            <div class="resultados" >
+            <form method="post" id="sucursalForm">
+                {% csrf_token %}
+                {{ form.as_table }}
+                <div class="botones">
+                    <button type="submit" class="button">Consultar</button>
+                    <button type="button" id="recuperarBtn">Guardar</button>
+                    <button type="reset" id="limpiarBtn">Limpiar</button>
+                </div>
+            </form>
+                {% if filtros %}
+                    <h2>Resultados:</h2>
+                    <ul>
+                        {% for filtro in filtros %}
+                        <li>
+                            Cliente: {{ filtro.cliente.nombre }} {{ filtro.cliente.apellido }}<br>
+                            Rut: {{filtro.cliente.rut}}<br>
+                            Ejecutivo: {{ filtro.ejecutivo.nombre_ejecutivo }}<br>
+                            Login Creador: {{ filtro.ejecutivo.username_ejecutivo }}<br>
+                            Tipo de Cliente: {{ filtro.cliente.tipo_cliente }}<br>
+                            Sucursal:  {{ filtro.sucursal.nombre_suc }}<br>
+                            Producto: {{ filtro.cliente.tipo_producto }}<br>
+                            Monto Solicitado: ${{ filtro.monto_solicitado }}<br>
+                            Número de Revisión: {{ filtro.n_revision }}<br>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
             </div>
-        </form>
-        {% if filtros %}
-        <h2>Resultados:</h2>
-        <ul>
-            {% for filtro in filtros %}
-                <li>
-                    Cliente: {{ filtro.cliente.nombre }} {{ filtro.cliente.apellido }}<br>
-                    Rut: {{filtro.cliente.rut}}<br>
-                    Ejecutivo: {{ filtro.ejecutivo.nombre_ejecutivo }}<br>
-                    Login Creador: {{ filtro.ejecutivo.username_ejecutivo }}<br>
-                    Tipo de Cliente: {{ filtro.cliente.tipo_cliente }}<br>
-                    Sucursal:  {{ filtro.sucursal.nombre_suc }}<br>
-                    Producto: {{ filtro.cliente.tipo_producto }}<br>
-                    Monto Solicitado: {{ filtro.monto_solicitado }}<br>
-                    Número de Revisión: {{ filtro.num_revision }}<br>
-                </li>
-            {% endfor %}
-        </ul>
-    {% endif %}
-        <!--Seccion central Variables-->
-        {% block contenido %}
+        </main>
+     <!--Seccion central Variables-->
+     {% block contenido %}
            
-        {% endblock contenido %}
+     {% endblock contenido %}
 
-        <!--Selector de Pilares--> 
-        <div class="right-column">
-            <h3>Pilares</h3>
-            <select id="pilar-select" onchange="navegarPilar()">
-                <option>Seleccione una opción</option>
-                <option value="{% url 'index' %}">Formalidad</option>
-                <option value="{% url 'gestion' %}">Gestión Otorgamiento</option>
-                <option value="{% url 'depuracion' %}">Depuración de Antecedentes</option>
-                <option value="{% url 'ingresos' %}">Ingreso de Datos</option>
-            </select>
-        </div>
-    </div>    
-
+     <!--Selector de Pilares--> 
+     <div class="right-column">
+         <h3>Pilares</h3>
+         <select id="pilar-select" onchange="navegarPilar()">
+             <option>Seleccione una opción</option>
+             <option value="{% url 'index' %}">Formalidad</option>
+             <option value="{% url 'gestion' %}">Gestión Otorgamiento</option>
+             <option value="{% url 'depuracion' %}">Depuración de Antecedentes</option>
+             <option value="{% url 'ingresos' %}">Ingreso de Datos</option>
+         </select>
+     </div>
+ </div>    
     {% block js %}
-    <script src="{% static 'js/navPilares.js' %}"></script>
+        <script src="{% static 'js/validacion.js' %}"></script>
+        <script src="{% static 'js/acciones.js' %}"></script>
+        <script src="{% static 'js/navPilares.js' %}"></script>
     {% endblock js %}
 </body>
 </html>
