@@ -35,31 +35,31 @@
       {% endif %}
       <form class="form" method="POST" action="{% url 'registro' %}" onclick="return validarRegistro()" >
         {% csrf_token %}
-        <div class="input">
+        <div class="input_reg">
           <label for="nombres">Nombres:</label>
           <input type="text" name="nombres" id="nombres" required>
         </div>
-        <div class="input">
+        <div class="input_reg">
           <label for="apellidos">Apellidos:</label>
           <input type="text" name="apellidos" id="apellidos" required>
         </div>
-        <div class="input">
+        <div class="input_reg">
           <label for="email">Email:</label>
           <input type="email" name="email" id="email" required>
         </div>
-        <div class="input">
+        <div class="input_reg">
           <label for="username">Nombre de usuario:</label>
           <input type="text" name="username" id="username" required>
         </div>
-        <div class="input">
+        <div class="input_reg">
           <label for="password">Contraseña:</label>
           <input type="password" name="password" id="password" required>
         </div>
-        <div class="input">
+        <div class="input_reg">
           <label for="password2">Confirmar Contraseña:</label>
           <input type="password" name="password2" id="password2" required>
         </div>
-        <div class="input">
+        <div class="input_reg">
           <div class="columna">
             <div class="caja-select">
               <label for="roles">Rol:</label>

@@ -77,28 +77,35 @@ def logout_view(request):
 	message = "Cerraste sesion correctamente"
 	return render(request,'web/login.html',{'output':message})
 
+@login_required
 def index(request):
     form, filtros = filtro_form(request)
     return render(request, 'web/index.html', {'form': form, 'filtros': filtros})
 
+@login_required
 def gestion_otorga(request):
     form, filtros = filtro_form(request)
     return render(request,'web/gestion_otorga.html', {'form': form, 'filtros': filtros})
 
+@login_required
 def depuracion_antece(request):
     form, filtros = filtro_form(request)
     return render(request,'web/depuracion_antece.html', {'form': form, 'filtros': filtros})
 
+@login_required
 def ingreso_datos(request):
     form, filtros = filtro_form(request)
     return render(request,'web/ingreso_datos.html', {'form': form, 'filtros': filtros})
 
+@login_required
 def base(request):
     form, filtros = filtro_form(request)
     return render(request, 'web/base.html', {'form': form, 'filtros': filtros})
 
+@login_required
 def listar_ejec(request):
     return render(request, 'web/listar_ejec.html')
 
+@login_required
 def reporte(request):
     return render(request, 'web/reporte.html')

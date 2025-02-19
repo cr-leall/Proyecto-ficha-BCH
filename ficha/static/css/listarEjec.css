@@ -119,8 +119,6 @@ canvas {
     display: block !important;
     width: auto !important; /* Ajusta el tamaño del canvas */
     height: 300px !important; /* Ajusta el tamaño del canvas */
-    border-radius: 10px;
-    background-color: white;
     padding: 20px;
 }
 

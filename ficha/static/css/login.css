@@ -1,3 +1,20 @@
+/* Estilos para el encabezado */
+.header {
+  width: 100%;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Distribuir espacio entre elementos */
+  padding: 10px;
+  background-color: rgb(6, 22, 100);
+  box-shadow: 0 3px 5px rgb(8, 8, 17);
+}
+
+#logo {
+  height: 70px;
+  margin-top: 10px;
+}
+
 /* Estilo formulario */
 #container {
   display: flex;
@@ -53,7 +70,7 @@
 }
 
 .button {
-  width: 90%;
+  width: 80%;
   padding: 10px;
   color: #fff;
   background-color: #0718b1;
@@ -63,7 +80,7 @@
   cursor: pointer;
   font-size: 18px;
   transition: background-color 0.3s ease;
-  margin-left: 5%;
+  margin-left: 10%;
 }
 
 .button:hover {
@@ -78,7 +95,7 @@
 }
 
 .signup .button {
-  padding: 10px 60px;
+  padding: 10px 40px;
   color: #fff;
   background-color: #0718b1;
   border: none;
@@ -126,7 +143,7 @@
 /*------------------------------------------*/
 .alert {
   padding: 15px;
-  font-size: 18px;
+  font-size: 16px;
   margin-bottom: 20px;
   border: 2px solid transparent;
   border-radius: 30px;

@@ -28,7 +28,11 @@ class Pilares(models.Model):
     
 class Parametro(models.Model):
     id_parametro = models.AutoField(primary_key=True)
+    #id_pilar = models.ForeignKey(Pilares,on_delete=models.CASCADE)
     nombre_parametro = models.CharField(max_length=150)
+
+    def __str__(self):
+         return f"{self.nombre_parametro}"
 
 class Errores_agravante(models.Model):
     id_base = models.AutoField(primary_key=True)
@@ -37,9 +41,9 @@ class Errores_agravante(models.Model):
     tipo_cliente = models.CharField(max_length=20)
     nota = models.CharField(max_length=20) 
     puntaje = models.DecimalField(max_digits=5, decimal_places=1)
-
+    #factor_penalty = models.FloatField() - Penaliza {self.factor_penalty * 100} %
     def __str__(self):
-         return self.nombre_parametro
+         return f"{self.nombre_parametro}"
 class sucursal(models.Model):
     cod_sucursal = models.CharField(("Codigo Sucursal"),primary_key=True, max_length=10)
     nombre_suc = models.CharField(("Nombre Sucursal"),max_length=50)
@@ -145,7 +149,7 @@ class ejecutivo(models.Model):
     username_ejecutivo = models.CharField(max_length=20)
 
     def __str__(self):
-        return f"{self.nombre_ejecutivo} / Username: {self.username_ejecutivo}"
+        return f"{self.nombre_ejecutivo}"
 
 class FiltroRevision(models.Model):
     id_filtro = models.AutoField(primary_key=True)

@@ -1,3 +1,4 @@
+
 /* Contenedor principal */
 #container {
   display: flex;
@@ -52,7 +53,7 @@
 }
 
 /* Estilos de los inputs */
-.form .input {
+.form .input_reg {
   width: 90%;
   padding: 10px;
   margin-top: 5px;
@@ -64,7 +65,7 @@
   color: rgb(253, 253, 253);
 }
 
-.form :where(.input input) {
+.form :where(.input_reg input) {
   width: 100%;
   padding: 10px;
   outline: none;
@@ -74,7 +75,7 @@
   background-color: rgba(17, 24, 39, 1);
 }
 
-.input input:focus {
+.input_reg input:focus {
   box-shadow: 0 5px #a8a9ad;
 }
 
@@ -110,11 +111,14 @@
 }
 /*------------------------------------------*/
 .alert {
+  width: 80%;
+  margin: 10px auto;
   padding: 15px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   border: 2px solid transparent;
   border-radius: 20px;
-  color: rgb(238, 221, 221); /* Cambia el color del texto */
-  background-color: #ce0000; /* Color de fondo para una alerta */
-  border-color: #885c67; /* Color del borde */
+  color: rgb(255, 255, 255); /* Cambia el color del texto */
+  background-color: #8b8f91; /* Color de fondo para una alerta */
+  border-color: #1c5dbe; /* Color del borde */
+  font-size: 16px;
 }
