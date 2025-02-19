@@ -1,8 +1,8 @@
 from django import forms
-from .models import cliente,oficina
+from .models import cliente, oficina
 
 class SucursalForm(forms.Form):
-    cui = forms.IntegerField(label='Codigo Oficina: ')
+    cui = forms.IntegerField(label='Código Oficina:')
     rut = forms.ModelChoiceField(
         queryset=cliente.objects.none(),  # Inicialmente vacío
         label='RUT Cliente',

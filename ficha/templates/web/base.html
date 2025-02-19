@@ -1,35 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-
 {% load static %}
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
     {% block estilos %}
-    
     {% endblock estilos %}
     <title>BancoChile</title>
 </head>
-
 <body>
-    <header class="header"> 
+    <header class="header">
         <div class="container">
             <div class="btn-menu">
                 <label for="btn-menu">☰</label>
-            </div>   
+            </div>
         </div>
         <nav>
-            <img src="{% static 'img/logoBch.png' %}" id="logo" alt="logoBch"> 
+            <img src="{% static 'img/logoBch.png' %}" id="logo" alt="logoBch">
         </nav>
         <div class="container-user">
             <div class="paste-button">
                 {% if user.is_authenticated %}
                     <img src="{{ user.userprofile.foto.url }}" alt="Foto de perfil" class="user-photo">
                 {% else %}
-                    <button class="button fa-solid fa-user"></button>
+                   ="button fa-solid fa-user"></button>
                 {% endif %}
                 <div class="dropdown-content">
                     {% if user.is_authenticated %}
@@ -56,69 +52,50 @@
         </div>
     </div>
     <div class="capa"></div>
-    <!--------------------------------------------------------->
-
-    <!--botones principales-->
     <div class="tarjeta">
         <h3>Calificación / Estado de Carpeta</h3>
-        <!--Mostrar mensaje bienvenida -->
         {% if success %}
             <div class="alert">{{ success }}</div>
         {% endif %}
-        <div class="resultado"> Excelente
-        </div>
-    </div> 
-
-    <!--Contenedor Principal-->
+        <div class="resultado">Excelente</div>
+    </div>
     <div id="container">
         <main>
-            <div class="resultados" >
-            <form method="post" id="sucursalForm">
-                {% csrf_token %}
-                {{ form.as_table }}
-                <div class="botones">
-                    <button type="submit" class="button">Consultar</button>
-                    <button type="button" id="recuperarBtn">Guardar</button>
-                    <button type="reset" id="limpiarBtn">Limpiar</button>
+            <div class="resultados">
+                <form method="post" id="sucursalForm" class="form2" >
+                    {% csrf_token %}
+                    <div class="input">
+                        <label for="{{ form.cui.id_for_label }}">Código Oficina:</label>
+                        {{ form.cui }}
+                    </div>
+                    <div class="input">
+                        <label for="{{ form.rut.id_for_label }}">RUT:</label>
+                        {{ form.rut }}
+                    </div>
+                    <div class="botones">
+                        <button type="submit" class="button">Consultar</button>
+                        <button type="button" class="button" id="guardarBtn">Guardar</button>
+                        <button type="reset" class="button" id="limpiarBtn">Limpiar</button>
+                    </div>
+                </form>
+                <div id="resul">
+                    {% include 'web/resultados.html' %}
                 </div>
-            </form>
-                {% if filtros %}
-                    <h2>Resultados:</h2>
-                    <ul>
-                        {% for filtro in filtros %}
-                        <li>
-                            Cliente: {{ filtro.cliente.nombre }} {{ filtro.cliente.apellido }}<br>
-                            Rut: {{filtro.cliente.rut}}<br>
-                            Ejecutivo: {{ filtro.ejecutivo.nombre_ejecutivo }}<br>
-                            Login Creador: {{ filtro.ejecutivo.username_ejecutivo }}<br>
-                            Tipo de Cliente: {{ filtro.cliente.tipo_cliente }}<br>
-                            Sucursal:  {{ filtro.sucursal.nombre_suc }}<br>
-                            Producto: {{ filtro.cliente.tipo_producto }}<br>
-                            Monto Solicitado: ${{ filtro.monto_solicitado }}<br>
-                            Número de Revisión: {{ filtro.n_revision }}<br>
-                        </li>
-                        {% endfor %}
-                    </ul>
-                {% endif %}
             </div>
         </main>
-     <!--Seccion central Variables-->
-     {% block contenido %}
-           
-     {% endblock contenido %}
-
-     <!--Selector de Pilares--> 
-     <div class="right-column">
-         <h3>Pilares</h3>
-         <select id="pilar-select" onchange="navegarPilar()">
-             <option>Seleccione una opción</option>
-             <option value="{% url 'index' %}">Formalidad</option>
-             <option value="{% url 'gestion' %}">Gestión Otorgamiento</option>
-             <option value="{% url 'depuracion' %}">Depuración de Antecedentes</option>
-             <option value="{% url 'ingresos' %}">Ingreso de Datos</option>
-         </select>
-     </div>
- </div>    
+        {% block contenido %}
+        {% endblock contenido %}
+        <div class="rightcolumn">
+            <h3>Pilares</h3>
+            <select id="pilar-select" onchange="navegarPilar()">
+                <option>Seleccione una opción</option>
+                <option value="{% url 'index' %}">Formalidad</option>
+                <option value="{% url 'gestion' %}">Gestión Otorgamiento</option>
+                <option value="{% url 'depuracion' %}">Depuración de Antecedentes</option>
+                <option value="{% url 'ingresos' %}">Ingreso de Datos</option>
+            </select>
+        </div>
+    </div>
     {% block js %}
         <script src="{% static 'js/validacion.js' %}"></script>
         <script src="{% static 'js/acciones.js' %}"></script>

@@ -1,0 +1,18 @@
+{% if filtros %}
+    <h2>Resultados:</h2>
+    <ul>
+        {% for filtro in filtros %}
+        <li>
+            Cliente: {{ filtro.cliente.nombre }} {{ filtro.cliente.apellido }}<br>
+            Rut: {{ filtro.cliente.rut }}<br>
+            Ejecutivo: {{ filtro.ejecutivo.nombre_ejecutivo }}<br>
+            Login Creador: {{ filtro.ejecutivo.username_ejecutivo }}<br>
+            Tipo de Cliente: {{ filtro.cliente.tipo_cliente }}<br>
+            Sucursal: {{ filtro.sucursal.nombre_suc }}<br>
+            Producto: {{ filtro.cliente.tipo_producto }}<br>
+            Monto Solicitado: ${{ filtro.monto_solicitado }}<br>
+            Número de Revisión: {{ filtro.n_revision }}<br>
+        </li>
+        {% endfor %}
+    </ul>
+{% endif %}

@@ -1,77 +1,76 @@
 {% extends "web/base.html" %}
 {% load static %}
- 
+{% include 'web/resultados.html' %}
 {% block contenido %}
 <div class="central-section">
     <h2>Evaluación Ejecutivo</h2>
 
     <div id="formalidad" class="pilar-contenido">
-          <h3> Formalidad</h3>
+        <h3>Formalidad</h3>
         <form id="form-evaluacion">
-        
-        <label>Verificación Laboral</label>
-        <div class="inputs">
-            <select id="respuesta-verificacion-laboral" name="respuesta-verificacion-laboral">
-                <option value="">Seleccione</option>
-                <option value="sin-error">SIN ERROR</option>
-                <option value="error">ERROR</option>
-                <option value="n/a">N/A</option>
-            </select>
-            <select name="tipo-error-verificacion-laboral">
-                <option value="">Seleccione</option>
-                <option value="no-esta-en-carpeta">No está en carpeta</option>
-                <option value="verificacion-incompleta">Verificación incompleta</option>
-            </select>
-            <input type="text" name="observacion" placeholder="Observaciones">
-        </div>
+            <label>Verificación Laboral</label>
+            <div class="inputs">
+                <select id="respuesta-verificacion-laboral" name="respuesta-verificacion-laboral">
+                    <option value="">Seleccione</option>
+                    <option value="sin-error">SIN ERROR</option>
+                    <option value="error">ERROR</option>
+                    <option value="n/a">N/A</option>
+                </select>
+                <select name="tipo-error-verificacion-laboral">
+                    <option value="">Seleccione</option>
+                    <option value="no-esta-en-carpeta">No está en carpeta</option>
+                    <option value="verificacion-incompleta">Verificación incompleta</option>
+                </select>
+                <input type="text" name="observacion" placeholder="Observaciones">
+            </div>
 
-        <label>Estado de Situación</label>
-        <div class="inputs">
-            <select id="respuesta-estado-situacion" name="respuesta-estado-situacion">
-                <option value="">Seleccione</option>
-                <option value="sin-error">SIN ERROR</option>
-                <option value="error">ERROR</option>
-                <option value="n/a">N/A</option>
-            </select>
-            <select name="tipo-error-estado-situacion">
-                <option value="">Seleccione</option>
-                <option value="es-sin-fecha">E.S. sin fecha</option>
-            </select>
-            <input type="text" name="observaciones" placeholder="Observaciones">
-        </div>
+            <label>Estado de Situación</label>
+            <div class="inputs">
+                <select id="respuesta-estado-situacion" name="respuesta-estado-situacion">
+                    <option value="">Seleccione</option>
+                    <option value="sin-error">SIN ERROR</option>
+                    <option value="error">ERROR</option>
+                    <option value="n/a">N/A</option>
+                </select>
+                <select name="tipo-error-estado-situacion">
+                    <option value="">Seleccione</option>
+                    <option value="es-sin-fecha">E.S. sin fecha</option>
+                </select>
+                <input type="text" name="observaciones" placeholder="Observaciones">
+            </div>
 
-        <label>Acreditación Ingresos</label>
-        <div class="inputs">
-            <select id="respuesta-acreditacion-ingresos" name="respuesta-acreditacion-ingresos">
-                <option value="">Seleccione</option>
-                <option value="sin-error">SIN ERROR</option>
-                <option value="error">ERROR</option>
-                <option value="n/a">N/A</option>
-            </select>
-            <select name="tipo-error-acreditacion-ingresos">
-                <option value="">Seleccione</option>
-                <option value="sin-acreditaciones-cuenta-estudiante">Sin acreditaciones cta. estudiante</option>
-                <option value="sin-acreditaciones-cta-mujer">Sin acreditaciones cta. mujer</option>
-                <option value="sin-acreditaciones">Sin acreditaciones</option>
-                <option value="acreditaciones-insuficientes">Acreditaciones insuficientes</option>
-                <option value="documentacion-sin-validar">Documentación sin validar</option>
-                <option value="faltan-antecedentes-empleador">Faltan antecedentes empleador</option>
-                <option value="falta-antecedentes-relacionados">Faltan antecedentes relacionados</option>
-                <option value="acreditacion-con-inconsistencias">Acreditación con inconsistencias</option>
-            </select>
-            <input type="text" name="observaciones" placeholder="Observaciones">
-        </div>
-        <div class="top-buttons">
-            <button type="button"> Recuperar </button>
-            <button type="reset"> Limpiar </button>
-            <button type="submit" class="button"> Archivar </button>
-        </div>
-    </form>
+            <label>Acreditación Ingresos</label>
+            <div class="inputs">
+                <select id="respuesta-acreditacion-ingresos" name="respuesta-acreditacion-ingresos">
+                    <option value="">Seleccione</option>
+                    <option value="sin-error">SIN ERROR</option>
+                    <option value="error">ERROR</option>
+                    <option value="n/a">N/A</option>
+                </select>
+                <select name="tipo-error-acreditacion-ingresos">
+                    <option value="">Seleccione</option>
+                    <option value="sin-acreditaciones-cuenta-estudiante">Sin acreditaciones cta. estudiante</option>
+                    <option value="sin-acreditaciones-cta-mujer">Sin acreditaciones cta. mujer</option>
+                    <option value="sin-acreditaciones">Sin acreditaciones</option>
+                    <option value="acreditaciones-insuficientes">Acreditaciones insuficientes</option>
+                    <option value="documentacion-sin-validar">Documentación sin validar</option>
+                    <option value="faltan-antecedentes-empleador">Faltan antecedentes empleador</option>
+                    <option value="falta-antecedentes-relacionados">Faltan antecedentes relacionados</option>
+                    <option value="acreditacion-con-inconsistencias">Acreditación con inconsistencias</option>
+                </select>
+                <input type="text" name="observaciones" placeholder="Observaciones">
+            </div>
+            <div class="top-buttons">
+                <button type="button">Recuperar</button>
+                <button type="reset">Limpiar</button>
+                <button type="submit" class="button">Archivar</button>
+            </div>
+        </form>
     </div>
 </div>
+{% endblock contenido %}
+
 {% block js %}
 <script src="{% static 'js/formalidad.js' %}"></script>
 <script src="{% static 'js/navPilares.js' %}"></script>
 {% endblock js %}
-
-{% endblock contenido %}

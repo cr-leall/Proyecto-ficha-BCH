@@ -1,11 +1,28 @@
 /* Contenedor principal */
 #container {
   display: flex;
-  text-align: left;
-  align-items: flex-start;
-  height: 10vh;
-  padding: 20px;
-  box-sizing: border-box;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+  gap: 10px;
+}
+/* Estilo Logout */
+.logout a {
+  color: #fff; /* Color del texto de los enlaces */
+  background-color: #0718b1;
+  padding: 10px 40px; /* Espaciado interno de los enlaces */
+  text-decoration: none; /* Sin subrayado */
+  display: block; /* Mostrar los enlaces como bloques */
+  border: none; /* Sin borde */
+  border-radius: 10px; /* Bordes redondeados */
+  text-align: center; /* Centrar el texto */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 17px; /* Tamaño de la fuente */
+  transition: background-color 0.3s ease; /* Transición suave */
+}
+
+.logout a:hover {
+  background-color: #0056b3;
 }
 
 /* Formulario de registro */
@@ -13,14 +30,15 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 100%;
-  max-width: 500px;
+  width: 45%;
+  height: auto;
   padding: 10px;
   border-radius: 20px;
   background-color: rgb(9, 2, 49);
   color: rgba(243, 244, 246, 1);
   box-shadow: 0 5px 8px rgb(3, 3, 14);
-  margin-top: 1px;
+  margin-top: 10px;
+  margin-bottom: 20px;
 }
 
 /* Título del formulario */
@@ -37,8 +55,9 @@
 .form .input {
   width: 90%;
   padding: 10px;
-  margin-top: 8px;
+  margin-top: 5px;
   color: white;
+  justify-content: center;
 }
 
 .input label {
@@ -56,12 +75,12 @@
 }
 
 .input input:focus {
-  box-shadow: 0 5px #5e5f66c4;
+  box-shadow: 0 5px #a8a9ad;
 }
 
 /* Estilos del select */
 .caja-select select {
-  width: 100%;
+  width: 104%;
   padding: 10px;
   color: rgb(255, 255, 255);
   font-size: 15px;
@@ -73,8 +92,9 @@
 /* Estilos del botón */
 .form button {
   height: 40px;
-  width: 100%;
+  width: 80%;
   margin-top: 20px;
+  margin-left: 10%;
   color: #fff;
   font-size: 16px;
   font-weight: 600;

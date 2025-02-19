@@ -1,54 +1,106 @@
-/*Cpntenedor principal*/
-.container{
+/* Contenedor principal */
+.contenedor {
     display: flex;
     flex-direction: column;
-    max-width: 900px;
+    align-items: center; /* Centra las secciones horizontalmente */
+    width: 100%;
     margin: auto;
-    background-color: white;
-    padding: 20px;
-    box-shadow: 0 4px 8px rgb(0, 0, 0,v 0.1);
 }
-/* secciones*/
-section{
-    margin-bottom: 20px;
-    padding: 15px;
-    border: 1px solid #ddd;
-    background: #fff;
-    border-radius: 5px;
+
+/* Secciones */
+.datos-sucursal, .resultados, .calificaciones, .evaluacion {
+    width: 80%;
+    background-color: #ffff;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.726);
+    border-radius: 20px;
+    margin: 10px auto; /* Centra las secciones horizontalmente */
+    padding: 20px; /* Añade un margen interno */
+    text-align: left; /* Alinea los párrafos a la izquierda */
+    transition: all 0.3s ease; /* Añade transición */
 }
-/*seccion de evaluacion*/
-.evaluacion h2,
-.evaluacion h2{
-    background-color: #34495e;
-    color: white;
-    padding: 10px;
-    margin: -15px -15px 15px -15px;
-    border-radius: 5px 5px 0 0;
+
+/* Títulos centrados */
+.datos-sucursal h2, .resultados h2, .calificaciones h2, .evaluacion h2 {
+    text-align: center;
+    font-size: 28px;
+    transition: color 0.9s ease; /* Añade transición */
+    color: rgb(6, 22, 100);
 }
-/*botones de calificacion*/
-.calificaciones{
+
+/* Párrafos con margen */
+.datos-sucursal p, .resultados p, .calificaciones p, .evaluacion p {
+    margin-left: 20px; /* Ajusta el margen según sea necesario */
+    margin-right: 20px; /* Ajusta el margen según sea necesario */
+    transition: margin 0.9s ease; /* Añade transición */
+}
+
+/* Botones de calificación */
+.calificaciones {
     text-align: center;
     margin-top: 20px;
 }
-.etiqueta{
-   display: flex;
-   align-items: center;
-   gap: 10px;
-   margin-bottom: 10px;
 
+.etiqueta {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
 }
-.etiqueta-texto{
-    font-size: 16px;
-    font-weight: normal;
-    color: #1f2a44; 
+
+.etiqueta-texto {
+    display: flex;
+    flex-direction: column;
+    align-content: flex-start;
+    margin-bottom: 10px; /* Espacio entre elementos */
+    padding: 10px; /* Espacio interno */
+    border: 1px solid #ddd; /* Borde */
+    border-radius: 10px; /* Bordes redondeados */
+    background-color: #f9f9f9; /* Fondo claro */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra */
+ 
 }
-.etiqueta-valor{
-    font-size: 16px;
-    font-weight: bold;
+.etiqueta-texto:hover {
+    background-color: #f1f1f1; /* Fondo más oscuro al pasar el ratón */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada */
+    transform: scale(1.03); /* Añade un pequeño zoom al pasar el ratón */
+  }
+  
+  .etiqueta-texto li p {
+    margin: 5px 0; /* Espacio entre párrafos */
+  }
+
+/* Estilos de botones */
+button {
+    background-color: rgb(6, 22, 100);
     color: white;
-    padding: 5px 10px;
+    border: none;
+    padding: 10px 20px;
     border-radius: 5px;
-    border: 2px solid white;
-    background: #1f2a44;
+    font-size: 18px;
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Añade transición */
 }
 
+button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05); /* Añade un pequeño zoom al pasar el ratón */
+}
+
+/* Adaptabilidad a diferentes pantallas */
+@media (max-width: 768px) {
+    .contenedor {
+        padding: 15px;
+    }
+
+    section {
+        padding: 10px;
+    }
+
+    .evaluacion h2 {
+        padding: 10px;
+        font-size: 1.25rem;
+    }
+
+    .etiqueta-texto, .etiqueta-valor {
+        font-size: 0.875rem;
+    }
+}

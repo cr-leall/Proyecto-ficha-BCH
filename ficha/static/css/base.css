@@ -1,17 +1,3 @@
-@import url("https://fonts.googleapis.com/css?family=Montserrat|Montserrat+Alternates|Poppins&display=swap");
-
-body {
-  background-image: url("https://cdn.pixabay.com/photo/2023/05/28/09/21/south-tyrol-8023213_1280.jpg");
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-}
-
-.capa {
-  position: fixed;
-  background: rgba(0, 0, 0, 0.6);
-}
-
 /* Menú lateral */
 #btn-menu {
   display: none;
@@ -37,7 +23,7 @@ body {
 .cont-menu {
   width: 100%;
   max-width: 300px;
-  background: #132669;
+  background-color: #132669;
   height: 100vh;
   position: relative;
   transition: all 300ms ease;
@@ -82,12 +68,13 @@ body {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  width: 96%;
+  width: 95%;
   padding: 1rem;
   background-color: #f9f9f9;
-  box-shadow: 0 2px 4px rgb(0, 0, 0);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
-  margin-top: 1rem;
+  margin-top: 10px;
+  margin-left: 1%;
 }
 
 .tarjeta .resultado {
@@ -95,31 +82,41 @@ body {
   padding: 15px;
   background-color: #132669;
   color: white;
-  border-radius: 8px;
+  border-radius: 10px;
   margin-top: 10px;
   text-align: center;
   font-weight: bold;
 }
-
+.tarjeta .alert {
+  padding: 15px;
+  font-size: 18px;
+  margin-bottom: 20px;
+  border: 2px solid transparent;
+  border-radius: 30px;
+  color: whitesmoke; /* Cambia el color del texto */
+  background-color: #5c5959; /* Color de fondo para una alerta */
+  border-color: rgb(40, 116, 238); /* Color del borde */
+}
 /* Contenedor Principal */
 #container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: space-between; /* Asegura que los elementos se distribuyan con espacio entre ellos */
   gap: 10px;
+  width: 100%; /* Asegura que el contenedor ocupe el ancho completo */
+  margin: 10px;
 }
 
 /* Sección Central */
-
 .central-section {
   margin-top: 10px;
   background: white;
   padding: 8px;
   border-radius: 20px;
-  box-shadow: 0 6px 8px rgb(0, 0, 0);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.1);
   text-align: left;
   height: auto;
-  width: auto;
+  width: 50%; /* Asegura que la sección ocupe el ancho completo */
   max-width: 43em;
 }
 
@@ -139,6 +136,7 @@ body {
   gap: 10px;
   align-items: center;
   margin-bottom: 20px;
+  justify-content: space-between; /* Distribuye los elementos con espacio entre ellos */
 }
 
 .inputs select,
@@ -153,12 +151,11 @@ body {
 
 .top-buttons {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around; /* Distribuye los botones con espacio entre ellos */
   align-items: center;
   width: 100%;
   max-width: 42em;
   background-color: #f9f9f9;
-  box-shadow: 2 1px 2px rgba(0, 0, 0, 0.274);
   border-radius: 30px;
   margin-top: 10px;
 }
@@ -173,19 +170,19 @@ body {
 }
 
 /* Columna Derecha */
-.right-column {
+#container .rightcolumn {
   flex-grow: 1;
   flex-basis: 0;
   background: white;
   padding: 20px;
-  width: auto;
+  width: 10%; /* Asegura que la columna ocupe el ancho completo */
   height: auto;
   border-radius: 20px;
-  box-shadow: 0 6px 8px rgb(0, 0, 0);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.1);
   margin-top: 10px;
 }
 
-.right-column h3 {
+.rightcolumn h3 {
   margin-bottom: 10px;
   font-size: 28px;
   color: #132669;

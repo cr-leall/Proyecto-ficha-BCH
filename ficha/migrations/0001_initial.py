@@ -89,13 +89,4 @@ class Migration(migrations.Migration):
                 ('sucursal', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='ficha.sucursal')),
             ],
         ),
-        migrations.CreateModel(
-            name='UserProfile',
-            fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('roles', models.CharField(max_length=50)),
-                ('foto', models.ImageField(default='default.jpg', upload_to='static/img')),
-                ('user', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
-            ],
-        ),
     ]

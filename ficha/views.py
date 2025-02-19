@@ -1,6 +1,5 @@
 from django.shortcuts import render
-from .models import cliente, ejecutivo, oficina, sucursal,FiltroRevision
-from .forms import SucursalForm
+from .utils import filtro_form
 #Import Modelo de tablas User
 from django.contrib.auth.models import User
 from .models import UserProfile
@@ -66,7 +65,7 @@ def login(request):
         us = authenticate(request, username=username, password=password)
         if us is not None and us.is_active:
             login_auth(request, us)
-            message = "Bienvenido a FichaBch Buen Día " + us.first_name
+            message = "Bienvenido a FichaBch Buen Día " + us.first_name + us.last_name
             return render(request, 'web/index.html', {'user': us, 'success': message})
         else:
             message = "Usuario o contraseña incorrectos"
@@ -79,30 +78,23 @@ def logout_view(request):
 	return render(request,'web/login.html',{'output':message})
 
 def index(request):
-    return render(request, 'web/index.html',)
+    form, filtros = filtro_form(request)
+    return render(request, 'web/index.html', {'form': form, 'filtros': filtros})
 
 def gestion_otorga(request):
-    return render(request,'web/gestion_otorga.html')
+    form, filtros = filtro_form(request)
+    return render(request,'web/gestion_otorga.html', {'form': form, 'filtros': filtros})
 
 def depuracion_antece(request):
-    return render(request,'web/depuracion_antece.html')
+    form, filtros = filtro_form(request)
+    return render(request,'web/depuracion_antece.html', {'form': form, 'filtros': filtros})
 
 def ingreso_datos(request):
-    return render(request,'web/ingreso_datos.html')
+    form, filtros = filtro_form(request)
+    return render(request,'web/ingreso_datos.html', {'form': form, 'filtros': filtros})
 
 def base(request):
-    filtros = None
-    if request.method == 'POST':
-        form = SucursalForm(request.POST)
-        if form.is_valid():
-            cui = form.cleaned_data['cui']
-            rut = form.cleaned_data.get('rut')
-            filtros = FiltroRevision.objects.filter(oficina__cui=cui)
-            if rut:
-                filtros = filtros.filter(cliente=rut)
-    else:
-        form = SucursalForm()
-
+    form, filtros = filtro_form(request)
     return render(request, 'web/base.html', {'form': form, 'filtros': filtros})
 
 def listar_ejec(request):

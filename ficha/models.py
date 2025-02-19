@@ -8,6 +8,14 @@ class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     roles = models.CharField(max_length=50)
     foto = models.ImageField(upload_to='static/img', default='default.jpg')
+    ci = models.CharField(max_length=10, unique=True, validators=[
+             RegexValidator(
+                regex = r'^\d{7,8}-[\dkK]$',
+                  message = "El RUT debe estar en formato 20222777-X"
+                        )
+                    ],
+                    help_text="Formato: 20222777-X"
+                        )
     def __str__(self):
         return self.user.username
 
