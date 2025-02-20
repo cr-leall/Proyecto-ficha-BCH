@@ -23,9 +23,10 @@
         <div class="container-user">
             <div class="paste-button">
                 {% if user.is_authenticated %}
-                    <img src="{{ user.userprofile.foto.url }}" alt="Foto de perfil" class="user-photo">
+                    <img src="{{ user.userprofile.foto.url }}" alt="Foto de perfil" class="user-photo" >
+                    <div id="user-status" class="circle"></div> <!-- Círculo de estado -->
                 {% else %}
-                   ="button fa-solid fa-user"></button>
+                    <button class="button fa-solid fa-user"></button>
                 {% endif %}
                 <div class="dropdown-content">
                     {% if user.is_authenticated %}

@@ -64,7 +64,7 @@ body {
   display: flex; /* Usar flexbox para alinear elementos */
   align-items: center;
   color: white;
-  padding-right: 20px; /* Espacio a la derecha */
+  padding-right: 10px; /* Espacio a la derecha */
 }
 
 /* Estilos para el icono de usuario */
@@ -72,6 +72,27 @@ body {
   color: white;
   border-right: 1px solid rgb(157, 154, 172);
   text-decoration: none;
+}
+.circle {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: grey; /* Color por defecto */
+  margin-left: 1px;
+  display: flex;
+  position: absolute; /* Posición absoluta para el menú desplegable */
+  z-index: 1; /* Asegurarse de que el menú desplegable esté por encima de otros elementos */
+  right: 0; /* Alinear el menú desplegable hacia la izquierda */
+  transform: translateX(-200%); /* Desplazar el menú hacia la izquierda */
+  top: 60px; /* Ajustar la posición vertical para que quede más arriba */
+}
+
+.active {
+  background-color: rgb(38, 226, 38); /* Color para usuario activo */
+}
+
+.inactive {
+  background-color: rgb(204, 10, 10); /* Color para usuario inactivo */
 }
 
 /* Estilos responsivos */
@@ -127,7 +148,7 @@ body {
   z-index: 1; /* Asegurarse de que el menú desplegable esté por encima de otros elementos */
   border-radius: 10px; /* Bordes redondeados */
   right: 0; /* Alinear el menú desplegable hacia la izquierda */
-  transform: translateX(-49%); /* Desplazar el menú hacia la izquierda */
+  transform: translateX(-45%); /* Desplazar el menú hacia la izquierda */
   top: 18px; /* Ajustar la posición vertical para que quede más arriba */
 }
 

@@ -44,6 +44,7 @@ class Errores_agravante(models.Model):
     #factor_penalty = models.FloatField() - Penaliza {self.factor_penalty * 100} %
     def __str__(self):
          return f"{self.nombre_parametro}"
+    
 class sucursal(models.Model):
     cod_sucursal = models.CharField(("Codigo Sucursal"),primary_key=True, max_length=10)
     nombre_suc = models.CharField(("Nombre Sucursal"),max_length=50)
@@ -162,3 +163,10 @@ class FiltroRevision(models.Model):
 
     def __str__(self):
         return f"N° filtro {self.id_filtro}"
+
+#class reporte(models.Model):
+    #id_reporte = models.AutoField(primary_key=True)
+    #name_reporte = models.CharField(max_length=50)
+
+    #def __str__(self):
+        #return f{N° Reporte{self.id_reporte}, {self.name_reporte}}""

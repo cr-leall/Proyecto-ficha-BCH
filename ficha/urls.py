@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.urls import path
 from .views import login, base, index, registro, gestion_otorga, depuracion_antece, ingreso_datos, listar_ejec, reporte
-
+#from .views import 
 urlpatterns = [
     path('', login, name='login'),
     path('registro/', registro, name='registro'),

@@ -12,3 +12,15 @@ def filtro_form(request):
         if rut:
             filtros = filtros.filter(cliente=rut)
     return form, filtros
+
+#   class evaluacion_cliente(APIView):
+#       def post(self, request, *args, **kwargs):
+        #data = request.data
+        #   Ejemplo del funcionamiento esperado:
+        #   { 'Tipo de clieten': 'Nuevo',
+        #       'respuesta': [
+        #           { 'id_parametro': 1,
+        #   'status': 'sin_error'},
+        #           {'id_parametro': 2,
+        #   'status': 'error', 'id_tipo_error': 1 },
+        #       nota_final == (total_puntaje / total_parametro) * 100] }

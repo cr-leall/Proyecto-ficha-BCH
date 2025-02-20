@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var resul = document.getElementById('resul');
     var sucursalForm = document.getElementById('sucursalForm');
 
-    if (limpiarBtn && guardarBtn && resul && sucursalForm) {
+    if (limpiarBtn && guardarBtn && resul && sucursalForm ) {
         limpiarBtn.addEventListener('click', function() {
             sucursalForm.reset(); // Restablece el formulario
             resul.innerHTML = ''; // Limpia el contenido de resul

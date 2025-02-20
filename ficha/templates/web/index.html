@@ -21,7 +21,7 @@
                     <option value="no-esta-en-carpeta">No está en carpeta</option>
                     <option value="verificacion-incompleta">Verificación incompleta</option>
                 </select>
-                <input type="text" name="observacion" placeholder="Observaciones">
+                <input type="text" name="observacion_verfic" placeholder="Observaciones">
             </div>
 
             <label>Estado de Situación</label>
@@ -36,7 +36,7 @@
                     <option value="">Seleccione</option>
                     <option value="es-sin-fecha">E.S. sin fecha</option>
                 </select>
-                <input type="text" name="observaciones" placeholder="Observaciones">
+                <input type="text" name="observacion_estado" placeholder="Observaciones">
             </div>
 
             <label>Acreditación Ingresos</label>
@@ -58,7 +58,7 @@
                     <option value="falta-antecedentes-relacionados">Faltan antecedentes relacionados</option>
                     <option value="acreditacion-con-inconsistencias">Acreditación con inconsistencias</option>
                 </select>
-                <input type="text" name="observaciones" placeholder="Observaciones">
+                <input type="text" name="observacion_acredita" placeholder="Observaciones">
             </div>
             <div class="top-buttons">
                 <button type="button">Recuperar</button>
@@ -73,4 +73,6 @@
 {% block js %}
 <script src="{% static 'js/formalidad.js' %}"></script>
 <script src="{% static 'js/navPilares.js' %}"></script>
+<script src="{% static 'js/validacion.js' %}"></script>
+<script src="{% static 'js/acciones.js' %}"></script>
 {% endblock js %}

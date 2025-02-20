@@ -9,6 +9,7 @@ from django.contrib.auth import authenticate, logout,login as login_auth
 from django.contrib.auth.decorators import login_required,permission_required
 from django.http import JsonResponse
 from django.db import IntegrityError
+
 # Create your views here.
 
 def registro(request):
