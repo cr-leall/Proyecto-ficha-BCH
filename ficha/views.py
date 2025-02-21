@@ -32,11 +32,10 @@ def registro(request):
             u = User.objects.create_user(username=username, email=email, password=password)
             u.first_name = nombres
             u.last_name = apellidos
-            u.save()
-
-            # Crear el perfil de usuario
+             # Crear el perfil de usuario
             perfil = UserProfile(user=u, roles=roles)
             perfil.save()
+            u.save()
 
             mensaje = "Registro exitoso"
 
@@ -84,26 +83,12 @@ def index(request):
     return render(request, 'web/index.html', {'form': form, 'filtros': filtros})
 
 @login_required
-def gestion_otorga(request):
-    form, filtros = filtro_form(request)
-    return render(request,'web/gestion_otorga.html', {'form': form, 'filtros': filtros})
-
-@login_required
-def depuracion_antece(request):
-    form, filtros = filtro_form(request)
-    return render(request,'web/depuracion_antece.html', {'form': form, 'filtros': filtros})
-
-@login_required
-def ingreso_datos(request):
-    form, filtros = filtro_form(request)
-    return render(request,'web/ingreso_datos.html', {'form': form, 'filtros': filtros})
-
-@login_required
 def base(request):
     form, filtros = filtro_form(request)
     return render(request, 'web/base.html', {'form': form, 'filtros': filtros})
 
 @login_required
+
 def listar_ejec(request):
     return render(request, 'web/listar_ejec.html')
 

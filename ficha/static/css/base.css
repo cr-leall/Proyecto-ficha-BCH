@@ -1,68 +1,3 @@
-/* Menú lateral */
-#btn-menu {
-  display: none;
-}
-
-.container-menu {
-  position: fixed;
-  background: rgba(0, 0, 0, 0.5);
-  width: 100%;
-  height: 100vh;
-  top: 0;
-  left: 0;
-  transition: all 300ms ease;
-  opacity: 0;
-  visibility: hidden;
-}
-
-#btn-menu:checked ~ .container-menu {
-  opacity: 1;
-  visibility: visible;
-}
-
-.cont-menu {
-  width: 100%;
-  max-width: 300px;
-  background-color: #132669;
-  height: 100vh;
-  position: relative;
-  transition: all 300ms ease;
-  transform: translateX(-100%);
-}
-
-#btn-menu:checked ~ .container-menu .cont-menu {
-  transform: translateX(0%);
-}
-
-.cont-menu nav {
-  transform: translateY(15%);
-}
-
-.cont-menu nav a {
-  display: block;
-  text-decoration: none;
-  padding: 20px;
-  color: #fff;
-  border-left: 5px solid transparent;
-  transition: all 400ms ease;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-.cont-menu nav a:hover {
-  border-left: 5px solid #97A9B8;
-  background: #494D5A;
-  text-transform: uppercase;
-}
-
-.cont-menu label {
-  position: absolute;
-  right: 5px;
-  top: 10px;
-  color: #fff;
-  cursor: pointer;
-  font-size: 18px;
-}
-
 /* Botones Principales */
 .tarjeta {
   display: flex;
@@ -87,71 +22,72 @@
   text-align: center;
   font-weight: bold;
 }
+
 .tarjeta .alert {
   padding: 15px;
   font-size: 16px;
   margin-bottom: 20px;
   border: 2px solid transparent;
   border-radius: 30px;
-  color: whitesmoke; /* Cambia el color del texto */
-  background-color: #5c5959; /* Color de fondo para una alerta */
-  border-color: rgb(40, 116, 238); /* Color del borde */
+  color: whitesmoke;
+  background-color: #5c5959;
+  border-color: rgb(40, 116, 238);
 }
+
 /* Contenedor Principal */
 #container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between; /* Asegura que los elementos se distribuyan con espacio entre ellos */
+  justify-content: space-between;
   gap: 10px;
-  width: 100%; /* Asegura que el contenedor ocupe el ancho completo */
+  width: 100%;
   margin: 10px;
 }
 
 /* Sección Central */
-.central-section {
-  margin-top: 10px;
-  background: white;
-  padding: 8px;
-  border-radius: 20px;
-  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.1);
-  text-align: left;
-  height: auto;
-  width: 50%; /* Asegura que la sección ocupe el ancho completo */
-  max-width: 43em;
+.evaluacion_section {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 80%;
+  max-width: 800px;
+  margin: 0 auto; /* Centra la sección en la pantalla */
 }
 
-.central-section h2 {
-  margin-bottom: 10px;
-  font-size: 30px;
-  color: #132669;
+.form_evaluacion {
+  display: flex;
+  flex-direction: column;
+}
+
+.forms_title {
   text-align: center;
-}
-
-.central-section label {
-  margin-top: 10px;
+  color: #132669;
+  font-size: 20px;
 }
 
 .inputs {
   display: flex;
+  flex-direction: column;
   gap: 10px;
-  align-items: center;
-  margin-bottom: 20px;
-  justify-content: space-between; /* Distribuye los elementos con espacio entre ellos */
+  width: 90%;
 }
-
+.label{
+  color: #132669;
+}
 .inputs select,
-.inputs input[type="text"] {
-  width: 100%;
-  max-width: 200px;
+.inputs input {
   padding: 10px;
-  border: 1px solid #645353d3;
-  border-radius: 10px;
-  cursor: pointer;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
 }
 
 .top-buttons {
   display: flex;
-  justify-content: space-around; /* Distribuye los botones con espacio entre ellos */
+  justify-content: space-around;
   align-items: center;
   width: 100%;
   max-width: 42em;
@@ -161,38 +97,165 @@
 }
 
 .top-buttons button {
-  padding: 10px 20px;
+  padding: 10px 30px;
   background-color: #132669;
   color: white;
   border: none;
   border-radius: 40px;
   cursor: pointer;
+  font-size: 17px;
 }
 
-/* Columna Derecha */
-#container .rightcolumn {
-  flex-grow: 1;
-  flex-basis: 0;
-  background: white;
-  padding: 20px;
-  width: 10%; /* Asegura que la columna ocupe el ancho completo */
+.button:hover {
+  background-color: #0056b3;
+}
+
+/* Estilos columna izquierda */
+.resultados {
+  margin-left: 10px;
+  width: auto;
   height: auto;
+  background: whitesmoke;
   border-radius: 20px;
-  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 6px 8px rgb(0, 0, 0);
+  font-size: 18px;
   margin-top: 10px;
 }
 
-.rightcolumn h3 {
-  margin-bottom: 10px;
-  font-size: 28px;
-  color: #132669;
+.form2 {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
 }
 
-#pilar-select,
-option {
-  width: 100%;
+.input {
+  margin-bottom: 15px;
+}
+
+.input label {
+  width: 90%;
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.input input {
+  width: 90%;
   padding: 10px;
-  border: 1px solid #000000;
-  border-radius: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.input select {
+  width: 90%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.botones {
+  display: flex;
+  justify-content: space-between;
+}
+
+.botones .button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px;
+  background-color: rgb(6, 22, 100);
+  color: white;
+  font-size: 14px;
   cursor: pointer;
+}
+
+.button:hover {
+  background-color: #0056b3;
+}
+
+.resultados h2 {
+  padding: 5px;
+  text-align: left;
+  font-size: 30px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.resultados ul {
+  align-content: flex-start;
+  padding: 10px;
+  text-align: left;
+  font-size: 16px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.resultados li {
+  display: flex;
+  flex-direction: column;
+  align-content: flex-start;
+  margin-bottom: 15px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.resultados li:hover {
+  background-color: #f1f1f1;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.resultados li p {
+  margin: 5px 0;
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+  .resultados {
+    width: 100%;
+    margin-left: 0;
+    height: auto;
+  }
+
+  .resultados h2 {
+    font-size: 24px;
+  }
+
+  .resultados ul {
+    font-size: 16px;
+  }
+
+  button {
+    width: 100%;
+    padding: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  form {
+    padding: 5px;
+  }
+
+  .resultados {
+    width: 100%;
+    margin-left: 0;
+    height: auto;
+  }
+
+  .resultados h2 {
+    font-size: 20px;
+  }
+
+  .resultados ul {
+    font-size: 14px;
+  }
+
+  button {
+    width: 100%;
+    padding: 8px;
+  }
 }

@@ -30,6 +30,11 @@
       {% if output %}
       <div class="alert">{{ output }}</div>
       {% endif %}
+       <!-- Mostrar mensaje registro exitoso -->
+       {% if msg %}
+       <div class="alert">{{ msg }}</div>
+     {% endif %}
+
       <form class="form1" action="{% url 'login' %}" method="post" onsubmit="validarDatos()">
         {% csrf_token %}
         <div class="input-group">

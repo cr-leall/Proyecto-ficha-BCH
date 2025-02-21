@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
             alert("Por favor, seleccione un tipo de error para Verificación Laboral.");
             valid = false;
         } else if (verificacionLaboral === "error" && observaciones === "") {
-            alert("Por favor, complete este campo observaciones.");
+            alert("Por favor, indique observaciones para la Verificación Laboral.");
             valid = false;
         }
 
@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function() {
             alert("Por favor, seleccione un tipo de error para Estado de Situación.");
             valid = false;
         } else if (estadoSituacion === "error" && observaciones === "") {
-            alert("Por favor, complete este campo observaciones.");
+            alert("Por favor, indique observaciones para el Estado de Situación.");
             valid = false;
         }
 
@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', function() {
             alert("Por favor, seleccione un tipo de error para Acreditación de Ingresos.");
             valid = false;
         } else if (acreditacionIngresos === "error" && observaciones === "") {
-            alert("Por favor, complete este campo observaciones.");
+            alert("Por favor, indique observaciones para la Acreditación de Ingresos.");
             valid = false;
         }
 

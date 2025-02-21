@@ -97,10 +97,6 @@ class cliente(models.Model):
                     help_text="Formato: 20222777-X"
                         )
     oficina = models.ForeignKey(oficina, on_delete=models.CASCADE)
-    nombre = models.CharField(max_length=150)
-    apellido = models.CharField(max_length=150)
-    email = models.EmailField
-    direccion = models.CharField(max_length=200)
     tipo_producto = models.CharField(max_length=100)
     tipo_cliente = models.CharField(max_length=40)
 
@@ -112,40 +108,24 @@ class cliente(models.Model):
          return f"{self.rut}"
 
 def val_rut_ejecutivo(rut_ejecutivo):
-    rut_ejecutivo = rut_ejecutivo.replace(".", "").replace("-","").upper()
-    cuerpo = rut_ejecutivo[:-1]
-    dv = rut_ejecutivo[-1]
+    rut_ejecutivo = rut_ejecutivo.replace(".", "").replace("-", "").upper()
+    if not rut_ejecutivo.isdigit():
+        raise ValidationError("Solo se admiten caracteres numéricos")
+    return rut_ejecutivo
 
-    if not cuerpo.isdigit():
-        raise ValidationError("Solo se adminten caracteres numericos")
-
-    suma = 0
-    multiplicador = 2
-    for c in reversed(cuerpo):
-        suma += int(c) * multiplicador
-        multiplicador += 1
-        if multiplicador > 7:
-            multiplicador = 2
-
-    resto = suma % 11
-    dv_calculado = str(11 - resto) if resto != 0 else "0"
-    if dv_calculado =="10":
-        dv_calculado = "K"
-
-    if dv != dv_calculado:
-                raise ValidationError("El digito verificador del RUT no es válido")    
 class ejecutivo(models.Model):
     rut_ejecutivo = models.CharField(
-         primary_key=True,
-         max_length=10,
-         validators=[
-             RegexValidator(
-                regex = r'^\d{7,8}-[\dkK]$',
-                  message = "El RUT debe estar en formato 20222777-X"
-                        )
-                    ],
-                    help_text="Formato: 20222777-X"
-                        )
+        primary_key=True,
+        max_length=8,
+        validators=[
+            RegexValidator(
+                regex=r'^\d{7,8}$',
+                message="El RUT debe estar en formato 20222778"
+            ),
+            val_rut_ejecutivo
+        ],
+        help_text="Formato: 20222778"
+    )
     nombre_ejecutivo = models.CharField(max_length=100)
     username_ejecutivo = models.CharField(max_length=20)
 

@@ -50,6 +50,70 @@ body {
   cursor: pointer;
   margin-left: 15px;
 }
+/* Menú lateral */
+#btn-menu {
+  display: none;
+}
+
+.container-menu {
+  position: fixed;
+  background: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  transition: all 300ms ease;
+  opacity: 0;
+  visibility: hidden;
+}
+
+#btn-menu:checked ~ .container-menu {
+  opacity: 1;
+  visibility: visible;
+}
+
+.cont-menu {
+  width: 100%;
+  max-width: 300px;
+  background-color: #132669;
+  height: 100vh;
+  position: relative;
+  transition: all 300ms ease;
+  transform: translateX(-100%);
+}
+
+#btn-menu:checked ~ .container-menu .cont-menu {
+  transform: translateX(0%);
+}
+
+.cont-menu nav {
+  transform: translateY(15%);
+}
+
+.cont-menu nav a {
+  display: block;
+  text-decoration: none;
+  padding: 20px;
+  color: #fff;
+  border-left: 5px solid transparent;
+  transition: all 400ms ease;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.cont-menu nav a:hover {
+  border-left: 5px solid #97A9B8;
+  background: #494D5A;
+  text-transform: uppercase;
+}
+
+.cont-menu label {
+  position: absolute;
+  right: 5px;
+  top: 10px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 18px;
+}
 
 /* Estilos para la foto del usuario */
 .user-photo {
@@ -176,152 +240,4 @@ body {
 
 .paste-button:hover .dropdown-content {
   display: block; /* Mostrar el contenido del menú desplegable al pasar el cursor sobre el botón */
-}
-/* Estilos columna izquierda  */
-.resultados {
-  margin-left: 10px;
-  width: auto;
-  height: auto;
-  background: whitesmoke;
-  border-radius: 20px;
-  box-shadow: 0 6px 8px rgb(0, 0, 0);
-  font-size: 18px;
-  margin-top: 10px;
-}
-
-.form2 {
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  background-color: #f9f9f9;
-}
-
-.input {
-  margin-bottom: 15px;
-}
-
-.input label {
-  width: 90%;
-  display: block;
-  margin-bottom: 5px;
-  font-weight: bold;
-}
-
-.input input {
-  width: 90%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 16px;
-}
-.input select {
-  width: 90%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 16px;
-}
-
-
-.botones {
-  display: flex;
-  justify-content: space-between;
-}
-
-.botones .button {
-  padding: 10px 20px;
-  border: none;
-  border-radius: 20px ;
-  background-color: rgb(6, 22, 100);
-  color: white;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-.button:hover {
-  background-color: #0056b3;
-}
-
-.resultados h2 {
-  padding: 5px;
-  text-align: left;
-  font-size: 30px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-.resultados ul {
-  align-content: flex-start;
-  padding: 10px;
-  text-align: left;
-  font-size: 16px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-.resultados li {
-  display: flex;
-  flex-direction: column;
-  align-content: flex-start;
-  margin-bottom: 15px; /* Espacio entre elementos */
-  padding: 10px; /* Espacio interno */
-  border: 1px solid #ddd; /* Borde */
-  border-radius: 10px; /* Bordes redondeados */
-  background-color: #f9f9f9; /* Fondo claro */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra */
-}
-
-.resultados li:hover {
-  background-color: #f1f1f1; /* Fondo más oscuro al pasar el ratón */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada */
-}
-
-.resultados li p {
-  margin: 5px 0; /* Espacio entre párrafos */
-}
-/* Estilos responsivos */
-@media (max-width: 768px) {
-  .resultados {
-    width: 100%;
-    margin-left: 0;
-    height: auto;
-  }
-
-  .resultados h2 {
-    font-size: 24px;
-  }
-
-  .resultados ul {
-    font-size: 16px;
-  }
-
-  button {
-    width: 100%;
-    padding: 10px;
-  }
-}
-
-@media (max-width: 480px) {
-  form {
-    padding: 5px;
-  }
-
-  .resultados {
-    width: 100%;
-    margin-left: 0;
-    height: auto;
-  }
-
-  .resultados h2 {
-    font-size: 20px;
-  }
-
-  .resultados ul {
-    font-size: 14px;
-  }
-
-  button {
-    width: 100%;
-    padding: 8px;
-  }
 }
