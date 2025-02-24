@@ -59,7 +59,7 @@ def login(request):
         password = request.POST.get('password', '').strip()
         # Validar que los campos no estén vacíos o contengan solo espacios en blanco
         if not username or not password:
-            message = "Usuario y contraseña son obligatorios y no deben contener solo espacios en blanco."
+            message = "Usuario y contraseña son obligatorios."
             return render(request, 'web/login.html', {'error': message})
         # Autenticar al usuario
         us = authenticate(request, username=username, password=password)
@@ -88,7 +88,6 @@ def base(request):
     return render(request, 'web/base.html', {'form': form, 'filtros': filtros})
 
 @login_required
-
 def listar_ejec(request):
     return render(request, 'web/listar_ejec.html')
 

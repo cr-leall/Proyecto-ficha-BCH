@@ -38,7 +38,7 @@
 #container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: space-around;
   gap: 10px;
   width: 100%;
   margin: 10px;
@@ -52,9 +52,8 @@
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  width: 80%;
+  width: 100%;
   max-width: 800px;
-  margin: 0 auto; /* Centra la sección en la pantalla */
 }
 
 .form_evaluacion {
@@ -67,16 +66,36 @@
   color: #132669;
   font-size: 20px;
 }
+.nav_pilares{
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+}
+.nav_pilares select {
+  width: 40%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+.select_forms h3{
+  color: black;
+  font-size: 23px;
+  text-transform: uppercase;
+}
 
+.select_forms label{
+  color: #132669;
+  font-size: 20px;
+  font-weight: bold;
+}
 .inputs {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  width: 90%;
+  width: 100%;
 }
-.label{
-  color: #132669;
-}
+
 .inputs select,
 .inputs input {
   padding: 10px;
@@ -87,15 +106,27 @@
 
 .top-buttons {
   display: flex;
-  justify-content: space-around;
-  align-items: center;
+  flex-direction: row;
+  justify-content: space-evenly;
   width: 100%;
-  max-width: 42em;
   background-color: #f9f9f9;
   border-radius: 30px;
   margin-top: 10px;
 }
-
+.section button{
+  align-content: space-between;
+  margin-top: 10px;
+  padding: 8px 20px;
+  background-color: #0d887e;
+  color: white;
+  border: none;
+  border-radius: 40px;
+  cursor: pointer;
+  font-size: 15px;
+}
+.section button:hover {
+  background-color: #21b7c2;
+}
 .top-buttons button {
   padding: 10px 30px;
   background-color: #132669;

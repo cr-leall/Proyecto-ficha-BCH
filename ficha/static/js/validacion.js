@@ -1,11 +1,3 @@
-document.getElementById('sucursalForm').addEventListener('submit', function(event) {
-    var idSucursal = document.getElementById('id_sucursal').value;
-    if (!idSucursal) {
-        alert('El campo ID de Sucursal no puede estar vacío.');
-        event.preventDefault();
-    }
-});
-
 document.addEventListener('DOMContentLoaded', function() {
     // Función para cambiar el color del círculo según el estado del usuario
     function setUserStatus(status) {
