@@ -29,10 +29,8 @@ def registro(request):
 
         try:
             # Intentar crear un nuevo usuario
-            u = User.objects.create_user(username=username, email=email, password=password)
-            u.first_name = nombres
-            u.last_name = apellidos
-             # Crear el perfil de usuario
+            u = User.objects.create_user(username=username, email=email, password=password, first_name = nombres, last_name = apellidos)
+            # Crear el perfil de usuario
             perfil = UserProfile(user=u, roles=roles)
             perfil.save()
             u.save()

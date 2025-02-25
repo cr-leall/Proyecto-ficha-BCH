@@ -11,7 +11,7 @@
         <div class="formulario_input">
             <div class="nav_pilares">
                 <select id="pilar_select" name="pilares" onchange="mostrarPilares()">
-                    <option value="none">Seleccione una opcion</option>
+                    <option style="display:none;">Seleccione una opcion</option>
                     <option value="formalidad">Formalidad</option>
                     <option value="gestion_otorga">Gestión Otorgamiento</option>
                     <option value="depuracon_antece">Depuración de Antecedentes</option>
@@ -19,9 +19,9 @@
                 </select>
             </div>
             <div class="select_forms">
-                <!---- Formulario pilar formalidad -->
+                <!---- Formulario pilar formalidad --> 
                 <div id="formFormalidad" class="componente-form">
-                    <div class="section" id="section1">
+                    <div id="section1" class="section">
                         <h3>Formalidad</h3>
                         <label>Verificación Laboral</label>
                         <div class="inputs">
@@ -73,15 +73,14 @@
                             </select>
                             <input type="text" name="observacion_acredita" placeholder="Observaciones">
                         </div>
-                        <button type="button">Atras</button>
-                        <button type="button" onclick="validateSection1()">Siguiente</button>
+                        <button type="button" class="tablinks" onclick="validateSection1(event)">Siguiente</button>
                     </div>
                 </div>
                 
-                <!------ Formulario pilar gestion de otorgamiento ------------------------------------>
+                <!------ Formulario pilar gestión de otorgamiento ------------------------------------>
                 <div id="formGestion_otorga" class="componente-form" style="display:none;">
-                    <div class="section" id="section2" >
-                        <h3> Gestión de Otorgamiento </h3>                       
+                    <div id="section2" class="section">
+                        <h3>Gestión de Otorgamiento</h3>                
                         <label> Atribuciones</label>
                         <div class="inputs">
                             <select id="respuesta-atribuciones">
@@ -151,14 +150,14 @@
                                 </select>
                                 <input type="text" name="observacion_res_deuda_vincu" placeholder="Observaciones">                                                  
                             </div>
-                            <button type="return">Atras</button>
-                            <button type="button" onclick="validateSection2()">Siguiente</button>
+                            <button type="button" onclick="goBack('section1')">Atrás</button>
+                            <button type="button" class="tablinks" onclick="validateSection2(event)">Siguiente</button>
                         </div>
                     </div>
                 </div>
                 <!------ Formulario pilar depuracion de antecedentes ----------------------------->
                 <div id="formDepuracon_antece" class="componente-form" style="display:none;">
-                    <div class="section" id="section3"  >
+                    <div id="section3" class="section">
                         <h3> Depuración de Antecedentes </h3>                    
                         <!--campo depuracion de antecedentes-->
                         <label> Ingresos Mensuales </label>
@@ -318,13 +317,13 @@
                                 <input type="text" name="obs_Monto_compraSBIF" placeholder="Debe Decir (m$)" > 
                                 <input type="text" name="obs_Monto_compraSBIF" placeholder="Observaciones">
                         </div>
-                        <button type="return">Atras</button>
-                        <button type="button" onclick="validateSection3()">Siguiente</button>
+                        <button type="button" onclick="goBack('section2')">Atrás</button>
+                        <button type="button" class="tablinks3" onclick="validateSection3()">Siguiente</button>
                     </div>
                 </div>
                 <!------ Formulario pilar ingreso de datos ----------------------------->
                 <div id="formIngreso_datos" class="componente-form" style="display:none;" >
-                    <div class="section" id="section4">
+                    <div id="section4" class="section">
                         <h3> Ingreso de Datos </h3> 
                         <label> Actividad </label>
                         <div class="inputs">
@@ -458,8 +457,8 @@
                             <input type="text" name="obs_Estado_civil" placeholder="Debe Decir "> 
                             <input type="text" name="obs_Estado_civil" placeholder="Observaciones">
                         </div>
-                        <button type="return">Atras</button>
-                        <button type="button" onclick="validateSection4()">Siguiente</button>
+                        <button type="button" onclick="goBack('section3')">Atrás</button>
+                        <button type="button" class="tablinks4" onclick="validateSection4()">Siguiente</button>
                     </div>
                 </div>
             </div>
