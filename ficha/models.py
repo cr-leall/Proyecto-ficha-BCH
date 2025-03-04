@@ -25,25 +25,21 @@ class Pilares(models.Model):
 
     def __str__(self):
         return self.name
-    
-class Parametro(models.Model):
-    id_parametro = models.AutoField(primary_key=True)
-    #id_pilar = models.ForeignKey(Pilares,on_delete=models.CASCADE)
-    nombre_parametro = models.CharField(max_length=150)
-
-    def __str__(self):
-         return f"{self.nombre_parametro}"
-
 class Errores_agravante(models.Model):
-    id_base = models.AutoField(primary_key=True)
-    nombre_parametro = models.CharField(max_length=100)
+    id = models.AutoField(primary_key=True)
     tipo_error = models.CharField(max_length=100)
-    tipo_cliente = models.CharField(max_length=20)
-    nota = models.CharField(max_length=20) 
-    puntaje = models.DecimalField(max_digits=5, decimal_places=1)
-    #factor_penalty = models.FloatField() - Penaliza {self.factor_penalty * 100} %
+    nota = models.DecimalField(max_digits=5, decimal_places=1)
     def __str__(self):
-         return f"{self.nombre_parametro}"
+         return f"{self.tipo_error}"
+
+class Parametro(models.Model):
+    id = models.AutoField(primary_key=True)
+    pilar = models.ForeignKey(Pilares, on_delete=models.CASCADE)
+    nombre = models.CharField(max_length=150)
+    errores_agravantes = models.ManyToManyField(Errores_agravante, blank=True)
+
+    def __str__(self):
+        return f"{self.nombre} - {self.pilar}"
     
 class sucursal(models.Model):
     cod_sucursal = models.CharField(("Codigo Sucursal"),primary_key=True, max_length=10)
@@ -100,10 +96,6 @@ class cliente(models.Model):
     tipo_producto = models.CharField(max_length=100)
     tipo_cliente = models.CharField(max_length=40)
 
-    def clean(self):
-        super().clean()
-        self.rut = self.rut.replace(".","").upper()
-        validar_rut(self.rut)
     def __str__(self):
          return f"{self.rut}"
 
@@ -142,7 +134,47 @@ class FiltroRevision(models.Model):
     n_revision = models.IntegerField(('N° Revision'))
 
     def __str__(self):
-        return f"N° filtro {self.id_filtro}"
+        return f"N° de revisión {self.n_revision}"
+
+class Evaluacion(models.Model):
+    ejecutivo = models.ForeignKey(ejecutivo, on_delete=models.CASCADE)
+    fecha = models.DateField(auto_now_add=True)
+    nota_final = models.DecimalField(max_digits=3, decimal_places=2)
+    clasificacion = models.CharField(max_length=50)
+
+    def calcular_nota_final(self):
+        detalles = DetalleEvaluacion.objects.filter(evaluacion=self)
+        nota_minima = min(detalle.nota for detalle in detalles)
+        self.nota_final = nota_minima
+        self.clasificacion = self.obtener_clasificacion(nota_minima)
+        self.save()
+
+    def obtener_clasificacion(self, nota):
+        if nota < 2:
+            return "Deficiente"
+        elif nota < 3:
+            return "Insuficiente"
+        elif nota < 4:
+            return "Regular"
+        elif nota < 4.5:
+            return "Aceptable"
+        elif nota < 5:
+            return "Destacado"
+        else:
+            return "Excelente"
+class DetalleEvaluacion(models.Model):
+    evaluacion = models.ForeignKey(Evaluacion, on_delete=models.CASCADE)
+    parametro = models.ForeignKey(Parametro, on_delete=models.CASCADE)
+    errores_agravantes = models.ManyToManyField(Errores_agravante, blank=True)
+    nota = models.DecimalField(max_digits=3, decimal_places=2)
+
+    def calcular_nota(self):
+        notas = [error.nota for error in self.errores_agravantes.all()]
+        if notas:
+            self.nota = min(notas)
+        else:
+            self.nota = 5  # Asumiendo que 5 es la nota máxima sin errores
+        self.save()
 
 #class reporte(models.Model):
     #id_reporte = models.AutoField(primary_key=True)

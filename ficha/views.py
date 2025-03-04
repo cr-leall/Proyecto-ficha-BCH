@@ -50,7 +50,6 @@ def registro(request):
     # Renderizar la página de registro si el método no es POST
     return render(request, 'web/registro.html')
     
-
 def login(request):
     if request.method == 'POST':
         username = request.POST.get('username', '').strip()
