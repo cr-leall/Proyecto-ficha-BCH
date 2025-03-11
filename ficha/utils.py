@@ -1,6 +1,6 @@
 # utils.py
 from .forms import SucursalForm
-from .models import FiltroRevision
+from .models import Registro_materialidad
 
 def filtro_form(request):
     filtros = None
@@ -8,10 +8,11 @@ def filtro_form(request):
     if form.is_valid():
         cui = form.cleaned_data['cui']
         rut = form.cleaned_data.get('rut')
-        filtros = FiltroRevision.objects.filter(oficina__cui=cui)
+        filtros = Registro_materialidad.objects.filter(cui=cui)
         if rut:
-            filtros = filtros.filter(cliente=rut)
+            filtros = filtros.filter(rut=rut)
     return form, filtros
+
 
 #   class evaluacion_cliente(APIView):
 #       def post(self, request, *args, **kwargs):

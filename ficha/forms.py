@@ -1,10 +1,10 @@
 from django import forms
-from .models import cliente, oficina
+from .models import Registro_materialidad
 
 class SucursalForm(forms.Form):
     cui = forms.IntegerField(label='Código Oficina:')
     rut = forms.ModelChoiceField(
-        queryset=cliente.objects.none(),  # Inicialmente vacío
+        queryset=Registro_materialidad.objects.none(),  # Inicialmente vacío
         label='RUT Cliente',
         required=False
     )
@@ -14,9 +14,9 @@ class SucursalForm(forms.Form):
         if 'cui' in self.data:
             try:
                 cui = int(self.data.get('cui'))
-                self.fields['rut'].queryset = cliente.objects.filter(oficina__cui=cui)
+                self.fields['rut'].queryset = Registro_materialidad.objects.filter(cui=cui)
             except (ValueError, TypeError):
                 pass  # Manejar el caso en que cui no sea un entero válido
         elif self.initial.get('cui'):
             cui = self.initial.get('cui')
-            self.fields['rut'].queryset = cliente.objects.filter(oficina__cui=cui)
+            self.fields['rut'].queryset = Registro_materialidad.objects.filter(cui=cui)

@@ -176,6 +176,36 @@ class DetalleEvaluacion(models.Model):
             self.nota = 5  # Asumiendo que 5 es la nota máxima sin errores
         self.save()
 
+class Registro_materialidad(models.Model):
+    id_registro = models.AutoField(primary_key=True)
+    rut = models.CharField(max_length=12)
+    dv = models.CharField(max_length=1)
+    log_fecha_registro = models.CharField(max_length=20)
+    login_creador = models.CharField(max_length=100)
+    nombre_creador = models.CharField(max_length=100)
+    oficina_ejecutivo = models.CharField(max_length=100)
+    cui = models.CharField(max_length=20)
+    etapa_venta_actual = models.CharField(max_length=100)
+    inconsistencia = models.CharField(max_length=100)
+    monto_oferta = models.CharField(max_length=100)
+    proceso_credito = models.CharField(max_length=100)
+    pauta_evaluacion = models.CharField(max_length=100)
+    decision_final = models.CharField(max_length=100)
+    ano_mes = models.CharField(max_length=6)
+    canal = models.CharField(max_length=100)
+    prod_eval = models.CharField(max_length=100)
+    nombre_ejecutivo = models.CharField(max_length=100)
+    rut_ejecutivo = models.CharField(max_length=12)
+    mes_numero = models.CharField(max_length=12)
+    mes_nombre = models.CharField(max_length=20)
+    codigo_suc = models.CharField(max_length=10)
+    nombre_suc = models.CharField(max_length=100)
+    aprobador = models.CharField(max_length=100)
+    n_oportunidad = models.CharField(max_length=20)
+
+    def __str__(self):
+        return f"{self.id_registro}"
+
 #class reporte(models.Model):
     #id_reporte = models.AutoField(primary_key=True)
     #name_reporte = models.CharField(max_length=50)
